@@ -16,6 +16,7 @@ namespace GayOldTime
 
         [Required]
         public string Deathdate { get; set; }
+
         [Required]
         public string Country { get; set; }
 
