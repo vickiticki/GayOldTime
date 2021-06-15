@@ -10,3 +10,34 @@ body {
   margin: 0;
   min-height: 100%;
 }
+
+.title {
+  text-align: center;
+}
+.stuff {
+  display: flex;
+  justify-content: space-around;
+}
+
+.order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  button {
+    margin-left: 10px;
+  }
+}
+
+.basic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+.facts {
+  list-style: none;
+}
+.recommended {
+  display: flex;
+}
