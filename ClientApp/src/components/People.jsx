@@ -25,6 +25,7 @@ export function People() {
         <button>Date</button>
         <button>Name</button>
       </div>
+
       <ul className="list of the people">
         <li>
           <Link to="/person">Sappho 630BCE</Link>
@@ -36,7 +37,9 @@ export function People() {
         <li>more</li>
         <li>lines</li>
       </ul>
-      <button>Add a Person</button>
+      <button>
+        <Link to="/newperson">Add a Person</Link>
+      </button>
     </>
   )
 }

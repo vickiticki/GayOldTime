@@ -25,14 +25,15 @@ export function Person() {
           stuff. OkieDokie.{' '}
         </p>
       </div>
+      <h3>Recommendations</h3>
       <div className="recommended media">
         <ul className="nonfiction sources">
-          Nonfiction
+          <h5>Nonfiction</h5>
           <li>Some Book</li>
           <li>Documentary or podcast maybe</li>
         </ul>
         <ul className="fiction sources">
-          Fiction
+          <h5>Fiction</h5>
           <li>Movie</li>
           <li>Video Game</li>
         </ul>

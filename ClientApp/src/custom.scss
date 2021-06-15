@@ -38,6 +38,14 @@ body {
 .facts {
   list-style: none;
 }
+h3 {
+  text-align: center;
+}
 .recommended {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  ul {
+    justify-content: center;
+  }
 }
