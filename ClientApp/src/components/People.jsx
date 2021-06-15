@@ -11,12 +11,13 @@ export function People() {
         <input
           type="text"
           id="nameSearch"
-          placeholder="name"
+          placeholder="search"
           value={searchName}
           onChange={(event) => setSearchName(event.target.value)}
         />
         <p>Filter: </p>
         {/* make these drop down buttons */}
+        {/* actually might get rid of this and just make it part of search */}
         <button>Era</button>
         <button>Country</button>
       </div>
