@@ -18,14 +18,21 @@ namespace GayOldTime.Migrations
                 .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-            modelBuilder.Entity("LgbtPeople", b =>
+            modelBuilder.Entity("GayOldTime.LgbtPerson", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<string>("Biography")
+                        .HasColumnType("text");
+
                     b.Property<string>("Birthdate")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Country")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -35,9 +42,6 @@ namespace GayOldTime.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("country")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
