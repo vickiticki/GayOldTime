@@ -1,8 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export function People() {
+  const [people, setPeople] = useState([])
   const [searchName, setSearchName] = useState('')
+
+  useEffect(function () {
+    async function loadPeople() {
+      const response = await fetch('/api/LgbtPeople')
+      console.log('check')
+
+      if (response.ok) {
+        console.log('check 2')
+        const json = await response.json()
+
+        console.log(json)
+        setPeople(json)
+      }
+    }
+    loadPeople()
+  }, [])
+
   return (
     <>
       <h1 className="home page title">Gay Old Time</h1>
@@ -27,7 +45,7 @@ export function People() {
         <button>Name</button>
       </div>
 
-      <ul className="list of the people">
+      {/* <ul className="list of the people">
         <li>
           <Link to="/person">Sappho 630BCE</Link>
         </li>
@@ -37,7 +55,16 @@ export function People() {
         <li>some</li>
         <li>more</li>
         <li>lines</li>
+      </ul> */}
+
+      <ul>
+        {people.map((person) => (
+          <li key={person.id}>
+            <Link to={`/person/${person.id}`}>{person.name}</Link>
+          </li>
+        ))}
       </ul>
+
       <button>
         <Link to="/newperson">Add a Person</Link>
       </button>

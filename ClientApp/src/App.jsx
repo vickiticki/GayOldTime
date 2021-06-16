@@ -12,10 +12,10 @@ export function App() {
         <Route exact path="/">
           <People />
         </Route>
-        <Route exact path="/person">
+        <Route exact path="/person/:id">
           <Person />
         </Route>
-        <Route exact path="/newperson">
+        <Route exact path="/newperson/">
           <NewPerson />
         </Route>
       </Switch>
