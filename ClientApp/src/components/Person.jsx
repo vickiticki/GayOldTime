@@ -1,29 +1,45 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 
 export function Person() {
-  const [person, setPerson] = useState({})
+  const params = useParams()
+  const id = params.id
+
+  const [person, setPerson] = useState({
+    name: '',
+    birthdate: '',
+    deathdate: '',
+    country: '',
+    biography: '',
+  })
+
+  useEffect(() => {
+    async function fetchPerson() {
+      const response = await fetch(`/api/LgbtPeople/${id}`)
+
+      if (response.ok) {
+        const apiData = await response.json()
+
+        setPerson(apiData)
+      }
+    }
+    fetchPerson()
+  }, [id])
+
   return (
     <>
-      <h1 className="Person page title">Person</h1>
+      <h1 className="Person page title">{person.name}</h1>
       <div className="basic info">
         <ul className="important facts">
-          <li>Tagline</li>
-          <li>Born: birthday</li>
-          <li>Died: deathday</li>
-          <li>Country: country</li>
+          <li>Tagline: I forgot this in the api so I'll deal with it later</li>
+          <li>Born: {person.birthdate}</li>
+          <li>Died: {person.deathdate}</li>
+          <li>Country: {person.country}</li>
         </ul>
         <div>Profile Picture Here</div>
       </div>
       <div className="quick little bio">
-        <p>
-          Here is a biography about the person in question. They were born in a
-          place and probably had parents. Some more stuff happened. Maybe they
-          traveled. Maybe they fell in love. Maybe they killed a man. Who's to
-          say? Well, I guess I am. Anyway, hopefully this is enough for me to
-          figure out how this page should look. At least for some basic css
-          stuff. OkieDokie.{' '}
-        </p>
+        <p>{person.biography}</p>
       </div>
       <h3>Recommended Media</h3>
       <div className="recommended media">
