@@ -25,7 +25,7 @@ export function Person() {
           stuff. OkieDokie.{' '}
         </p>
       </div>
-      <h3>Recommendations</h3>
+      <h3>Recommended Media</h3>
       <div className="recommended media">
         <ul className="nonfiction sources">
           <h5>Nonfiction</h5>

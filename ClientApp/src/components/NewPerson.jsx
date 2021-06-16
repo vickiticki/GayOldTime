@@ -41,9 +41,10 @@ export function NewPerson() {
           <textarea name="biography"></textarea>
         </p>
 
-        <h3>Recommendations</h3>
+        <h3>Recommended Media</h3>
         <div className="recommended media">
           <ul className="nonfiction sources">
+            {/* change this to one input box and one checkmark for nonfiction */}
             <h5>Nonfiction</h5>
             <li>
               <input type="text" name="nonfiction" />
