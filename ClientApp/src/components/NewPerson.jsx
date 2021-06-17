@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 export function NewPerson() {
+  const history = useHistory()
+
   const [newPerson, setNewPerson] = useState({
     name: '',
     birthdate: '',
@@ -18,10 +20,25 @@ export function NewPerson() {
   const [dMonth, setDMonth] = useState('')
   const [dDate, setDDate] = useState('')
 
-  function handleFormSubmit(event) {
-    setNewPerson({ ...newPerson, birthdate: `${bYear}-${bMonth}-${bDate}` })
-    setNewPerson({ ...newPerson, deathdate: `${dYear}-${dMonth}-${dDate}` })
-    console.log(newPerson.birthdate)
+  async function handleFormSubmit(event) {
+    event.preventDefault()
+
+    // setNewPerson({ ...newPerson, birthdate: `${bYear}-${bMonth}-${bDate}` })
+    // setNewPerson({ ...newPerson, deathdate: `${dYear}-${dMonth}-${dDate}` })
+    newPerson.birthdate = `${bYear}-${bMonth}-${bDate}`
+    newPerson.deathdate = `${dYear}-${dMonth}-${dDate}`
+
+    const response = await fetch('/api/LgbtPeople', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newPerson),
+    })
+    if (response.ok) {
+      history.push('/')
+    } else {
+      console.log('oops')
+    }
+
     console.log('form submitted')
   }
 
