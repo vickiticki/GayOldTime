@@ -15,6 +15,7 @@ namespace GayOldTime.Models
 
         // Add database tables here
         public DbSet<LgbtPerson> LgbtPeople { get; set; }
+        public DbSet<MediaRec> MediaRecs { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

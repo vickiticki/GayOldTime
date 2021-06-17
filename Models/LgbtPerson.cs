@@ -22,5 +22,7 @@ namespace GayOldTime
 
         public string Biography { get; set; }
 
+        public List<MediaRec> MediaRecs { get; set; }
+
     }
 }
