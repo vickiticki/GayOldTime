@@ -36,7 +36,12 @@ namespace GayOldTime.Controllers
         {
             // Uses the database context in `_context` to request all of the LgbtPeople, sort
             // them by row id and return them as a JSON array.
-            return await _context.LgbtPeople.OrderBy(row => row.Id).ToListAsync();
+
+            // UPDATE TO INCLUDE A FILTER WITH AN IF STATEMENT AND ORDER BY YEAR OR ALPHABET
+
+            return await _context.LgbtPeople.OrderBy(row => row.Id).Include(person => person.MediaRecs).ToListAsync();
+
+
         }
 
         // GET: api/LgbtPeople/5
