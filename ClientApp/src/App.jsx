@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link, Route, Switch } from 'react-router-dom'
+import { Header } from './components/Header'
+import { Foot } from './components/Foot'
 import { People } from './components/People'
 import { Person } from './components/Person'
 import { NewPerson } from './components/NewPerson'
@@ -8,6 +10,7 @@ import './custom.scss'
 export function App() {
   return (
     <>
+      <Header />
       <Switch>
         <Route exact path="/">
           <People />
@@ -19,6 +22,7 @@ export function App() {
           <NewPerson />
         </Route>
       </Switch>
+      <Foot />
     </>
   )
 }

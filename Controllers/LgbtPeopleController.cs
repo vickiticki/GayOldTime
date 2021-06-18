@@ -39,7 +39,7 @@ namespace GayOldTime.Controllers
 
             // UPDATE TO INCLUDE A FILTER WITH AN IF STATEMENT AND ORDER BY YEAR OR ALPHABET
 
-            return await _context.LgbtPeople.OrderBy(row => row.Id).Include(person => person.MediaRecs).ToListAsync();
+            return await _context.LgbtPeople.OrderBy(row => row.Id).ToListAsync();
 
 
         }
