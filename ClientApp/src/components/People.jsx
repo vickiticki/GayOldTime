@@ -23,6 +23,17 @@ export function People() {
 
   return (
     <>
+      <header>
+        <div className="top left">
+          <h5>Gay Old Time</h5>
+        </div>
+        <div className="top right">
+          <ul>
+            <li>Sign In</li>
+            <li>Sign Up</li>
+          </ul>
+        </div>
+      </header>
       <h1 className="home page title">Gay Old Time</h1>
       <div className="home search and filter stuff">
         <p>Search</p>
