@@ -16,7 +16,11 @@ body {
 }
 .stuff {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.add {
+  margin-bottom: 1rem;
 }
 
 .order {

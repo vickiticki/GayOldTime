@@ -33,11 +33,10 @@ export function People() {
           value={searchName}
           onChange={(event) => setSearchName(event.target.value)}
         />
-        <p>Filter: </p>
-        {/* make these drop down buttons */}
-        {/* actually might get rid of this and just make it part of search */}
+        {/* <p>Filter: </p>
+       
         <button>Era</button>
-        <button>Country</button>
+        <button>Country</button> */}
       </div>
       <div className="pick the order">
         Order By:
@@ -45,27 +44,19 @@ export function People() {
         <button>Name</button>
       </div>
 
-      {/* <ul className="list of the people">
-        <li>
-          <Link to="/person">Sappho 630BCE</Link>
-        </li>
-        <li>Leonard da Vinci 1452</li>
-        <li>Julie d'Aubigny 1670</li>
-        <li>just</li>
-        <li>some</li>
-        <li>more</li>
-        <li>lines</li>
-      </ul> */}
-
       <ul>
         {people.map((person) => (
           <li key={person.id}>
-            <Link to={`/person/${person.id}`}>{person.name}</Link>
+            <h4>
+              <Link to={`/person/${person.id}`}>{person.name} </Link>
+            </h4>
+            <p>{person.birthdate.slice(0, 4)}</p>
+            <p>{person.country}</p>
           </li>
         ))}
       </ul>
 
-      <button>
+      <button className="add person button">
         <Link to="/newperson">Add a Person</Link>
       </button>
     </>
