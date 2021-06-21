@@ -20,13 +20,21 @@ export function NewPerson() {
   const [dMonth, setDMonth] = useState('')
   const [dDate, setDDate] = useState('')
 
+  const bbce = document.querySelector('#bbce')
+  const dbce = document.querySelector('#dbce')
+
   async function handleFormSubmit(event) {
     event.preventDefault()
-
-    // setNewPerson({ ...newPerson, birthdate: `${bYear}-${bMonth}-${bDate}` })
-    // setNewPerson({ ...newPerson, deathdate: `${dYear}-${dMonth}-${dDate}` })
-    newPerson.birthdate = `${bYear}-${bMonth}-${bDate}`
-    newPerson.deathdate = `${dYear}-${dMonth}-${dDate}`
+    if (bbce.checked) {
+      newPerson.birthdate = `${bYear}-${bMonth}-${bDate} BCE`
+    } else {
+      newPerson.birthdate = `${bYear}-${bMonth}-${bDate}`
+    }
+    if (dbce.checked) {
+      newPerson.deathdate = `${dYear}-${dMonth}-${dDate} BCE`
+    } else {
+      newPerson.deathdate = `${dYear}-${dMonth}-${dDate}`
+    }
 
     const response = await fetch('/api/LgbtPeople', {
       method: 'POST',
@@ -49,6 +57,14 @@ export function NewPerson() {
     setNewPerson({ ...newPerson, [fieldName]: value })
 
     console.log(newPerson.name)
+  }
+
+  function birthBCE() {
+    if (bbce.checked) {
+      console.log('yessir')
+    } else {
+      console.log('nope')
+    }
   }
 
   return (
@@ -92,6 +108,14 @@ export function NewPerson() {
               value={bDate}
               onChange={(event) => setBDate(event.target.value)}
             />
+            {'   '}
+            BCE
+            <input
+              type="checkbox"
+              id="bbce"
+              name="birthBCE"
+              onChange={birthBCE}
+            />
           </p>
           <p className="input for death date">
             <label>Deathdate</label>
@@ -116,6 +140,9 @@ export function NewPerson() {
               value={dDate}
               onChange={(event) => setDDate(event.target.value)}
             />
+            {'   '}
+            BCE
+            <input type="checkbox" id="dbce" name="deathBCE" value="BCE" />
           </p>
           <p className="input for country of origin">
             <label>Country</label>
