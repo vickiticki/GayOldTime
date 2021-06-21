@@ -16,6 +16,15 @@ body {
   // flex-direction: column;
   // flex: 2;
 }
+
+a:link {
+  color: orange;
+}
+
+a:visited {
+  color: rgba(255, 145, 0, 0.838);
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -23,10 +32,16 @@ header {
   padding-right: 10px;
   border-bottom: solid 1px black;
   .left {
-    font-size: 20px;
+    font-size: 22px;
   }
   ul {
     list-style: none;
+  }
+
+  a:visited,
+  a:link {
+    color: #185691;
+    text-decoration: none;
   }
 }
 
@@ -42,14 +57,6 @@ footer {
   background-color: white;
 }
 
-a:link {
-  color: orange;
-}
-
-a:visited {
-  color: rgba(255, 145, 0, 0.838);
-}
-
 button {
   background-color: #43a4b9;
   color: #3a1605;
@@ -57,7 +64,13 @@ button {
   font-weight: 500;
   padding: 3px;
   border-radius: 8px;
+  a:visited,
+  a:link {
+    text-decoration: none;
+    color: #3a1605;
+  }
 }
+
 .title {
   text-align: center;
 }
