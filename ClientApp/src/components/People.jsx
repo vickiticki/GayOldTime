@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 export function People() {
   const [people, setPeople] = useState([])
   const [searchName, setSearchName] = useState('')
+  const [howSort, setHowSort] = useState('date')
 
   useEffect(function () {
     async function loadPeople() {
@@ -29,6 +30,40 @@ export function People() {
     }
   }
 
+  // this will need to be adjusted to accommodate BCE
+  function dateSort(people) {
+    console.log('sort by date')
+    people.sort(function (a, b) {
+      if (a.birthdate < b.birthdate) {
+        return -1
+      }
+      if (a.birthdate > b.birthdate) {
+        return 1
+      }
+      return 0
+    })
+  }
+
+  function nameSort(names) {
+    console.log('sort by name')
+    names.sort(function (a, b) {
+      if (a.name < b.name) {
+        return -1
+      }
+      if (a.name > b.name) {
+        return 1
+      }
+      return 0
+    })
+  }
+
+  function Sorting(people) {
+    if (howSort === 'date') {
+      dateSort(people)
+    } else {
+      nameSort(people)
+    }
+  }
   return (
     <>
       <h1 className="home page title">Gay Old Time</h1>
@@ -41,18 +76,15 @@ export function People() {
           value={searchName}
           onChange={(event) => setSearchName(event.target.value)}
         />
-        {/* <p>Filter: </p>
-       
-        <button>Era</button>
-        <button>Country</button> */}
       </div>
       <div className="pick the order">
         Order By:
-        <button>Date</button>
-        <button>Name</button>
+        <button onClick={(event) => setHowSort('date')}>Date</button>
+        <button onClick={(event) => setHowSort('name')}>Name</button>
       </div>
 
       <ul>
+        {Sorting(people)}
         {people.map((person) => (
           <li key={person.id}>
             <h4>
