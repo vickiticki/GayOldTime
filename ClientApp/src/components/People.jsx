@@ -21,6 +21,14 @@ export function People() {
     loadPeople()
   }, [])
 
+  function displayBirthYear(person) {
+    if (person.birthdate.includes('B')) {
+      return person.birthdate.slice(0, 4) + ' BCE'
+    } else {
+      return person.birthdate.slice(0, 4)
+    }
+  }
+
   return (
     <>
       <h1 className="home page title">Gay Old Time</h1>
@@ -50,7 +58,8 @@ export function People() {
             <h4>
               <Link to={`/person/${person.id}`}>{person.name} </Link>
             </h4>
-            <p>{person.birthdate.slice(0, 4)}</p>
+
+            <p>{displayBirthYear(person)}</p>
             <p>{person.country}</p>
           </li>
         ))}
