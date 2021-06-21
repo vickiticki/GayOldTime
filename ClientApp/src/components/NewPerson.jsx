@@ -88,21 +88,21 @@ export function NewPerson() {
           <p className="input for birth date">
             <label>Birthdate</label>
             <input
-              type="text"
+              type="number"
               placeholder="YYYY"
               name="birthyear"
               value={bYear}
               onChange={(event) => setBYear(event.target.value)}
             />
             <input
-              type="text"
+              type="number"
               placeholder="MM"
               name="birthmonth"
               value={bMonth}
               onChange={(event) => setBMonth(event.target.value)}
             />
             <input
-              type="text"
+              type="number"
               placeholder="MM"
               name="birthday"
               value={bDate}
@@ -120,21 +120,21 @@ export function NewPerson() {
           <p className="input for death date">
             <label>Deathdate</label>
             <input
-              type="text"
+              type="number"
               placeholder="YYYY"
               name="deathyear"
               value={dYear}
               onChange={(event) => setDYear(event.target.value)}
             />
             <input
-              type="text"
+              type="number"
               placeholder="MM"
               name="deathmonth"
               value={dMonth}
               onChange={(event) => setDMonth(event.target.value)}
             />
             <input
-              type="text"
+              type="number"
               placeholder="DD"
               name="deathday"
               value={dDate}

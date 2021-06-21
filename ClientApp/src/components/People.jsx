@@ -33,11 +33,11 @@ export function People() {
     <>
       <h1 className="home page title">Gay Old Time</h1>
       <div className="home search and filter stuff">
-        <p>Search</p>
+        <p className="search label">Search</p>
         <input
           type="text"
           id="nameSearch"
-          placeholder="search"
+          placeholder="Name or Country"
           value={searchName}
           onChange={(event) => setSearchName(event.target.value)}
         />
