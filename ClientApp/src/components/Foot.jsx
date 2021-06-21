@@ -1,7 +1,7 @@
 export function Foot() {
   return (
     <footer>
-      <p>This is the end, silly billy</p>
+      <p>This is the end, my dude</p>
     </footer>
   )
 }
