@@ -23,16 +23,26 @@ export function People() {
   }, [])
 
   function displayBirthYear(person) {
+
+    var birthyear = person.birthdate.split('-')[0]
+    if (birthyear < 1000)
+    {
+      birthyear = `0${birthyear}`
+  
+    }
+    
     if (person.birthdate.includes('B')) {
-      return person.birthdate.slice(0, 4) + ' BCE'
+      return birthyear + ' BCE'
     } else {
-      return person.birthdate.slice(0, 4)
+      return birthyear
     }
   }
 
   // this will need to be adjusted to accommodate BCE
   function dateSort(people) {
     console.log('sort by date')
+
+   
     people.sort(function (a, b) {
       if (a.birthdate < b.birthdate) {
         return -1
@@ -43,6 +53,7 @@ export function People() {
       return 0
     })
   }
+  
 
   function nameSort(names) {
     console.log('sort by name')

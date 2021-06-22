@@ -25,6 +25,9 @@ export function NewPerson() {
 
   async function handleFormSubmit(event) {
     event.preventDefault()
+    if (bYear < 1000) {
+      setBYear(`0${bYear}`)
+    }
     if (bbce.checked) {
       newPerson.birthdate = `${bYear}-${bMonth}-${bDate} BCE`
     } else {
@@ -67,6 +70,10 @@ export function NewPerson() {
     }
   }
 
+  function makeBYear(){
+    
+  }
+
   return (
     <>
       <h1 className="new person page title">New Person</h1>
@@ -92,7 +99,7 @@ export function NewPerson() {
               placeholder="YYYY"
               name="birthyear"
               value={bYear}
-              onChange={(event) => setBYear(event.target.value)}
+              onChange={makeBYear}
             />
             <input
               type="number"
