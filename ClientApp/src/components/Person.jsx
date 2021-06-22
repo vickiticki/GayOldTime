@@ -31,7 +31,7 @@ export function Person() {
       <h1 className="Person page title">{person.name}</h1>
       <div className="basic info">
         <ul className="important facts">
-          <li>Tagline: I forgot this in the api so I'll deal with it later</li>
+          
           <li>Born: {person.birthdate}</li>
           <li>Died: {person.deathdate}</li>
           <li>Country: {person.country}</li>

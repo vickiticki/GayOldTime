@@ -70,9 +70,7 @@ export function NewPerson() {
     }
   }
 
-  function makeBYear(){
-    
-  }
+ 
 
   return (
     <>
@@ -88,10 +86,7 @@ export function NewPerson() {
           />
         </p>
         <div className="information form">
-          <p className="input for tagline">
-            <label>Tagline</label>
-            <input type="text" name="tagline" />
-          </p>
+          
           <p className="input for birth date">
             <label>Birthdate</label>
             <input
@@ -99,7 +94,7 @@ export function NewPerson() {
               placeholder="YYYY"
               name="birthyear"
               value={bYear}
-              onChange={makeBYear}
+              onChange={(event) => setBYear(event.target.value)}
             />
             <input
               type="number"
