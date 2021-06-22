@@ -23,17 +23,10 @@ export function People() {
   }, [])
 
   function displayBirthYear(person) {
-    var birthyear = person.birthdate.split('-')[0]
-    // if (birthyear < 1000)
-    // {
-    //   birthyear = `0${birthyear}`
-
-    // }
-
-    if (person.birthdate.includes('B')) {
-      return birthyear + ' BCE'
+    if (person.birthYear < 0) {
+      return `${0 - person.birthYear} BCE`
     } else {
-      return birthyear
+      return person.birthYear
     }
   }
 
@@ -97,7 +90,7 @@ export function People() {
               <Link to={`/person/${person.id}`}>{person.name} </Link>
             </h4>
 
-            <p>{person.birthYear}</p>
+            <p>{displayBirthYear(person)}</p>
             <p>{person.country}</p>
           </li>
         ))}

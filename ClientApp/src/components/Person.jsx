@@ -27,13 +27,23 @@ export function Person() {
     fetchPerson()
   }, [id])
 
+  function displayBirth(person) {
+    if (person.birthYear < 0) {
+      const newYear = 0 - person.birthYear
+      return `${newYear}-${person.birthday} BCE`
+    } else {
+      return `${person.birthYear.toString()}-${person.birthday}`
+    }
+  }
+
   return (
     <>
       <h1 className="Person page title">{person.name}</h1>
       <div className="basic info">
         <ul className="important facts">
           <li>
-            Born: {person.birthYear.toString()}-{person.birthday}
+            Born: {displayBirth(person)}
+            {/* Born: {person.birthYear.toString()}-{person.birthday} */}
           </li>
           <li>Died: {person.deathdate}</li>
           <li>Country: {person.country}</li>
