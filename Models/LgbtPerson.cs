@@ -11,13 +11,13 @@ namespace GayOldTime
         [Required]
         public string Name { get; set; }
 
-        [Required]
-        public string Birthdate { get; set; }
-
         // [Required]
-        //public int BirthYear {get; set; }
+        // public string Birthdate { get; set; }
 
-        //public string BirthDay {get; set; }
+        [Required]
+        public int BirthYear { get; set; }
+
+        public string Birthday { get; set; }
 
         [Required]
         public string Deathdate { get; set; }

@@ -7,7 +7,8 @@ export function Person() {
 
   const [person, setPerson] = useState({
     name: '',
-    birthdate: '',
+    birthYear: 0,
+    birthday: '',
     deathdate: '',
     country: '',
     biography: '',
@@ -31,8 +32,9 @@ export function Person() {
       <h1 className="Person page title">{person.name}</h1>
       <div className="basic info">
         <ul className="important facts">
-          
-          <li>Born: {person.birthdate}</li>
+          <li>
+            Born: {person.birthYear.toString()}-{person.birthday}
+          </li>
           <li>Died: {person.deathdate}</li>
           <li>Country: {person.country}</li>
         </ul>

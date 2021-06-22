@@ -23,14 +23,13 @@ export function People() {
   }, [])
 
   function displayBirthYear(person) {
-
     var birthyear = person.birthdate.split('-')[0]
     // if (birthyear < 1000)
     // {
     //   birthyear = `0${birthyear}`
-  
+
     // }
-    
+
     if (person.birthdate.includes('B')) {
       return birthyear + ' BCE'
     } else {
@@ -40,25 +39,16 @@ export function People() {
 
   // this will need to be adjusted to accommodate BCE
   function dateSort(people) {
-
-    console.log('sort by date')
-    var bcPeople = people.filter(person => person.birthdate.includes('B'))
-    var cePeople = people.filter(person => {return !person.birthdate.includes('B')})
-    console.log(bcPeople)
-    console.log(cePeople)
-    
-   
     people.sort(function (a, b) {
-      if (a.birthdate < b.birthdate) {
+      if (a.birthYear < b.birthYear) {
         return -1
       }
-      if (a.birthdate > b.birthdate) {
+      if (a.birthYear > b.birthYear) {
         return 1
       }
       return 0
     })
   }
-  
 
   function nameSort(names) {
     console.log('sort by name')
@@ -107,7 +97,7 @@ export function People() {
               <Link to={`/person/${person.id}`}>{person.name} </Link>
             </h4>
 
-            <p>{displayBirthYear(person)}</p>
+            <p>{person.birthYear}</p>
             <p>{person.country}</p>
           </li>
         ))}

@@ -6,7 +6,8 @@ export function NewPerson() {
 
   const [newPerson, setNewPerson] = useState({
     name: '',
-    birthdate: '',
+    birthYear: 0,
+    birthday: '',
     deathdate: '',
     country: '',
     biography: '',
@@ -25,13 +26,13 @@ export function NewPerson() {
 
   async function handleFormSubmit(event) {
     event.preventDefault()
-    if (bYear < 1000) {
-      setBYear(`0${bYear}`)
-    }
+
     if (bbce.checked) {
-      newPerson.birthdate = `${bYear}-${bMonth}-${bDate} BCE`
+      newPerson.birthYear = 0 - parseInt(bYear)
+      newPerson.birthday = `${bMonth}-${bDate}`
     } else {
-      newPerson.birthdate = `${bYear}-${bMonth}-${bDate}`
+      newPerson.birthYear = parseInt(bYear)
+      newPerson.birthday = `${bMonth}-${bDate}`
     }
     if (dbce.checked) {
       newPerson.deathdate = `${dYear}-${dMonth}-${dDate} BCE`
@@ -70,8 +71,6 @@ export function NewPerson() {
     }
   }
 
- 
-
   return (
     <>
       <h1 className="new person page title">New Person</h1>
@@ -86,7 +85,6 @@ export function NewPerson() {
           />
         </p>
         <div className="information form">
-          
           <p className="input for birth date">
             <label>Birthdate</label>
             <input
