@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useHistory } from 'react-router-dom'
 
 export function Person() {
   const params = useParams()
   const id = params.id
+  const history = useHistory()
 
   const [person, setPerson] = useState({
     name: '',
@@ -13,6 +14,13 @@ export function Person() {
     country: '',
     biography: '',
     mediaRecs: [],
+  })
+
+  const [newFMedia, setNewFMedia] = useState({
+    item: '',
+    fiction: true,
+    personId: id,
+    LgbtPersonId: id,
   })
 
   useEffect(() => {
@@ -37,6 +45,15 @@ export function Person() {
     }
   }
 
+  function handleFictionChange(event) {
+    setNewFMedia({
+      item: event.target.value,
+      fiction: true,
+      personId: id,
+      LgbtPersonId: id,
+    })
+  }
+
   return (
     <>
       <h1 className="Person page title">{person.name}</h1>
@@ -59,7 +76,7 @@ export function Person() {
         <ul className="nonfiction sources">
           <h5>Nonfiction</h5>
           {person.mediaRecs
-            .filter((x) => x.fiction == false)
+            .filter((x) => x.fiction === false)
             .map((media) => (
               <li key={media.id}>{media.item}</li>
             ))}
@@ -67,10 +84,13 @@ export function Person() {
         <ul className="fiction sources">
           <h5>Fiction</h5>
           {person.mediaRecs
-            .filter((x) => x.fiction == true)
+            .filter((x) => x.fiction === true)
             .map((media) => (
               <li key={media.id}>{media.item}</li>
             ))}
+          <li>
+            <input type="text" name="fiction" onChange={handleFictionChange} />
+          </li>
         </ul>
       </div>
       <button className="go home">
