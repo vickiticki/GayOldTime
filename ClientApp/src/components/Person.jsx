@@ -58,13 +58,19 @@ export function Person() {
       <div className="recommended media">
         <ul className="nonfiction sources">
           <h5>Nonfiction</h5>
-          <li>Some Book</li>
-          <li>{person.mediaRecs.length}</li>
+          {person.mediaRecs
+            .filter((x) => x.fiction == false)
+            .map((media) => (
+              <li key={media.id}>{media.item}</li>
+            ))}
         </ul>
         <ul className="fiction sources">
           <h5>Fiction</h5>
-          <li>Movie</li>
-          <li>Video Game</li>
+          {person.mediaRecs
+            .filter((x) => x.fiction == true)
+            .map((media) => (
+              <li key={media.id}>{media.item}</li>
+            ))}
         </ul>
       </div>
       <button className="go home">

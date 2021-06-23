@@ -9,5 +9,5 @@ INSERT INTO "LgbtPeople" ("Name", "BirthYear", "Birthday", "Deathdate", "Country
 
 INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId", "LgbtPersonId") VALUES ('Assassins Creed 2', true, 3, 3);
 INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId", "LgbtPersonId") VALUES ('Assassins Creed Brotherhood', true, 5, 5);
-INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId", "LgbtPersonId") VALUES ('Leaonardo da Vinci by Walter Isaacson', false, 3, 3);
+INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId", "LgbtPersonId") VALUES ('Leonardo da Vinci by Walter Isaacson', false, 3, 3);
 INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId", "LgbtPersonId") VALUES ('Rejected Princesses by Jason Porath', false, 2, 2);
