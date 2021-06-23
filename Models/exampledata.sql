@@ -11,3 +11,4 @@ INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId", "LgbtPersonId") VALUES (
 INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId", "LgbtPersonId") VALUES ('Assassins Creed Brotherhood', true, 5, 5);
 INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId", "LgbtPersonId") VALUES ('Leonardo da Vinci by Walter Isaacson', false, 3, 3);
 INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId", "LgbtPersonId") VALUES ('Rejected Princesses by Jason Porath', false, 2, 2);
+INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId", "LgbtPersonId") VALUES ('Ikemen Vampire', true, 3, 3);
