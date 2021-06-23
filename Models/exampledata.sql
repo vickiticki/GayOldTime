@@ -1,5 +1,5 @@
-TRUNCATE TABLE "LgbtPeople" RESTART IDENTITY;
-TRUNCATE TABLE "MediaRecs" RESTART IDENTITY;
+TRUNCATE TABLE "LgbtPeople", "MediaRecs" RESTART IDENTITY;
+
 
 INSERT INTO "LgbtPeople" ("Name", "BirthYear", "Birthday", "Deathdate", "Country", "Biography") VALUES ('Alexander the Great', -356, '07-20', '323-06-10 BCE', 'Greece', 'Alexander the Great was obsessed with Achilles. Total Achilles kin. His best friend was Bucephalus, his horse. His boyfriend was Hephaestion. He conquered a lot of land but died very young and with no obvious heir, so his kingdom was split up.');
 INSERT INTO "LgbtPeople" ("Name", "BirthYear", "Birthday", "Deathdate", "Country", "Biography") VALUES ('Julie d Aubigny', 1670, '01-01', '1707-01-01', 'France', 'Julie was one of the coolest women to ever live. She was a bisexual opera singer and fencer. She married young but then hit the road, earning a living singing and fencing. At one point she joined a convent and set it on fire to free her love. She was exiled a couple times.');
