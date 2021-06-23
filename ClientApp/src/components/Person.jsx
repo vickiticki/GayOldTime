@@ -59,7 +59,7 @@ export function Person() {
         <ul className="nonfiction sources">
           <h5>Nonfiction</h5>
           <li>Some Book</li>
-          <li>Documentary or podcast maybe</li>
+          <li>{person.mediaRecs.length}</li>
         </ul>
         <ul className="fiction sources">
           <h5>Fiction</h5>
