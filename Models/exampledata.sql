@@ -7,7 +7,7 @@ INSERT INTO "LgbtPeople" ("Name", "BirthYear", "Birthday", "Deathdate", "Country
 INSERT INTO "LgbtPeople" ("Name", "BirthYear", "Birthday", "Deathdate", "Country", "Biography") VALUES ('Oscar Wilde', 1854, '10-16', '1900-11-30', 'Ireland', 'Oscar was born and grew up. He studied classics. He wrote some plays. Then he met Lord Alfred Douglas and got into a fight with Queenberry, the father of Douglas. Oscar should have left it alone but instead he sued him and things did not go his way and Oscar went to jail. The End.');
 INSERT INTO "LgbtPeople" ("Name", "BirthYear", "Birthday", "Deathdate", "Country", "Biography") VALUES ('Salai', 1480, '01-01', '1524-03-01', 'Italy', 'Gian Giacomo Caprotti da Oreno is better known as Salai. He was Leonardos student and probably lover and a spoiled little shit. I love him so much. He loved to wear fancy clothes and eat anise candy. He died in a duel.');
 
-INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId") VALUES ('Assassins Creed 2', true, 3);
-INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId") VALUES ('Assassins Creed Brotherhood', true, 5);
-INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId") VALUES ('Leaonardo da Vinci by Walter Isaacson', false, 3);
-INSERT INTO "MediaRecs" ("Item", "fiction", "PersonId") VALUES ('Rejected Princesses by Jason Porath', false, 2);
+INSERT INTO "MediaRecs" ("Item", "fiction", "LgbtPersonId") VALUES ('Assassins Creed 2', true, 3);
+INSERT INTO "MediaRecs" ("Item", "fiction", "LgbtPersonId") VALUES ('Assassins Creed Brotherhood', true, 5);
+INSERT INTO "MediaRecs" ("Item", "fiction", "LgbtPersonId") VALUES ('Leaonardo da Vinci by Walter Isaacson', false, 3);
+INSERT INTO "MediaRecs" ("Item", "fiction", "LgbtPersonId") VALUES ('Rejected Princesses by Jason Porath', false, 2);

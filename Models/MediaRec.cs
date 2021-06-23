@@ -13,6 +13,7 @@ namespace GayOldTime
 
         public int PersonId { get; set; }
 
+        public int LgbtPersonId { get; set; }
 
     }
 }
