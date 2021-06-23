@@ -39,7 +39,7 @@ namespace GayOldTime.Controllers
 
             // UPDATE TO INCLUDE A FILTER WITH AN IF STATEMENT AND ORDER BY YEAR OR ALPHABET
 
-            return await _context.LgbtPeople.OrderBy(row => row.Id).ToListAsync();
+            return await _context.LgbtPeople.OrderBy(row => row.Id).Include(person => person.MediaRecs).ToListAsync();
 
 
         }
@@ -54,7 +54,7 @@ namespace GayOldTime.Controllers
         public async Task<ActionResult<LgbtPerson>> GetLgbtPerson(int id)
         {
             // Find the lgbtPerson in the database using `FindAsync` to look it up by id
-            var lgbtPerson = await _context.LgbtPeople.FindAsync(id);
+            var lgbtPerson = await _context.LgbtPeople.Include(person => person.MediaRecs).Where(person => person.Id == id).FirstOrDefaultAsync();
 
             // If we didn't find anything, we receive a `null` in return
             if (lgbtPerson == null)
