@@ -23,6 +23,23 @@ export function Person() {
     LgbtPersonId: id,
   })
 
+  const [newNFMedia, setNewNFMedia] = useState({
+    item: '',
+    fiction: false,
+    personId: id,
+    LgbtPersonId: id,
+  })
+
+  async function reloadPerson() {
+    const response = await fetch(`/api/LgbtPeople/${id}`)
+
+    if (response.ok) {
+      const apiData = await response.json()
+
+      setPerson(apiData)
+    }
+  }
+
   useEffect(() => {
     async function fetchPerson() {
       const response = await fetch(`/api/LgbtPeople/${id}`)
@@ -36,13 +53,41 @@ export function Person() {
     fetchPerson()
   }, [id])
 
-  async function handleNewMediaSubmit(event) {
+  async function handleNewFMediaSubmit(event) {
     event.preventDefault()
     const response = await fetch(`/api/MediaRec`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newFMedia),
     })
+
+    if (response.ok) {
+      setNewFMedia({
+        item: '',
+        fiction: true,
+        personId: id,
+        LgbtPersonId: id,
+      })
+      reloadPerson()
+    }
+  }
+  async function handleNewNFMediaSubmit(event) {
+    event.preventDefault()
+    const response = await fetch(`/api/MediaRec`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newNFMedia),
+    })
+
+    if (response.ok) {
+      setNewNFMedia({
+        item: '',
+        fiction: false,
+        personId: id,
+        LgbtPersonId: id,
+      })
+      reloadPerson()
+    }
   }
 
   function displayBirth(person) {
@@ -63,7 +108,7 @@ export function Person() {
     })
   }
   function handleNonfictionChange(event) {
-    setNewFMedia({
+    setNewNFMedia({
       item: event.target.value,
       fiction: false,
       personId: id,
@@ -97,12 +142,15 @@ export function Person() {
             .map((media) => (
               <li key={media.id}>{media.item}</li>
             ))}
-          <input
-            type="text"
-            name="nonfiction"
-            onChange={handleNonfictionChange}
-          />
-          <button onClick={handleNewMediaSubmit}>Add</button>
+          <li>
+            <input
+              type="text"
+              name="nonfiction"
+              value={newNFMedia.item}
+              onChange={handleNonfictionChange}
+            />
+            <button onClick={handleNewNFMediaSubmit}>Add</button>
+          </li>
         </ul>
         <ul className="fiction sources">
           <h5>Fiction</h5>
@@ -112,8 +160,13 @@ export function Person() {
               <li key={media.id}>{media.item}</li>
             ))}
           <li>
-            <input type="text" name="fiction" onChange={handleFictionChange} />
-            <button onClick={handleNewMediaSubmit}>Add</button>
+            <input
+              type="text"
+              name="fiction"
+              value={newFMedia.item}
+              onChange={handleFictionChange}
+            />
+            <button onClick={handleNewFMediaSubmit}>Add</button>
           </li>
         </ul>
       </div>
