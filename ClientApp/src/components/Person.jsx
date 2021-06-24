@@ -36,6 +36,15 @@ export function Person() {
     fetchPerson()
   }, [id])
 
+  async function handleNewFMediaSubmit(event) {
+    event.preventDefault()
+    const response = await fetch(`/api/MediaRec`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newFMedia),
+    })
+  }
+
   function displayBirth(person) {
     if (person.birthYear < 0) {
       const newYear = 0 - person.birthYear
@@ -90,6 +99,7 @@ export function Person() {
             ))}
           <li>
             <input type="text" name="fiction" onChange={handleFictionChange} />
+            <button onClick={handleNewFMediaSubmit}>Add</button>
           </li>
         </ul>
       </div>
