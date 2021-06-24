@@ -36,7 +36,7 @@ export function Person() {
     fetchPerson()
   }, [id])
 
-  async function handleNewFMediaSubmit(event) {
+  async function handleNewMediaSubmit(event) {
     event.preventDefault()
     const response = await fetch(`/api/MediaRec`, {
       method: 'POST',
@@ -58,6 +58,14 @@ export function Person() {
     setNewFMedia({
       item: event.target.value,
       fiction: true,
+      personId: id,
+      LgbtPersonId: id,
+    })
+  }
+  function handleNonfictionChange(event) {
+    setNewFMedia({
+      item: event.target.value,
+      fiction: false,
       personId: id,
       LgbtPersonId: id,
     })
@@ -89,6 +97,12 @@ export function Person() {
             .map((media) => (
               <li key={media.id}>{media.item}</li>
             ))}
+          <input
+            type="text"
+            name="nonfiction"
+            onChange={handleNonfictionChange}
+          />
+          <button onClick={handleNewMediaSubmit}>Add</button>
         </ul>
         <ul className="fiction sources">
           <h5>Fiction</h5>
@@ -99,7 +113,7 @@ export function Person() {
             ))}
           <li>
             <input type="text" name="fiction" onChange={handleFictionChange} />
-            <button onClick={handleNewFMediaSubmit}>Add</button>
+            <button onClick={handleNewMediaSubmit}>Add</button>
           </li>
         </ul>
       </div>
