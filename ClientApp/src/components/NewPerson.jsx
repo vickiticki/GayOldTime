@@ -76,7 +76,7 @@ export function NewPerson() {
       <h1 className="new person page title">New Person</h1>
       <form onSubmit={handleFormSubmit}>
         <p>
-          <label className="input for name">Name</label>
+          <label className="input for name">Name: </label>
           <input
             type="text"
             name="name"
@@ -86,7 +86,7 @@ export function NewPerson() {
         </p>
         <div className="information form">
           <p className="input for birth date">
-            <label>Birthdate</label>
+            <label>Birthdate: </label>
             <input
               type="number"
               placeholder="YYYY"
@@ -118,7 +118,7 @@ export function NewPerson() {
             />
           </p>
           <p className="input for death date">
-            <label>Deathdate</label>
+            <label>Deathdate: </label>
             <input
               type="number"
               placeholder="YYYY"
@@ -145,7 +145,7 @@ export function NewPerson() {
             <input type="checkbox" id="dbce" name="deathBCE" value="BCE" />
           </p>
           <p className="input for country of origin">
-            <label>Country</label>
+            <label>Country: </label>
             <input
               type="text"
               name="country"
@@ -158,7 +158,7 @@ export function NewPerson() {
         </div>
 
         <p className="input for biography">
-          <label>Biography</label>
+          <label>Biography: </label>
           <textarea
             name="biography"
             value={newPerson.biography}

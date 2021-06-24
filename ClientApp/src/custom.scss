@@ -105,11 +105,34 @@ button {
 h3 {
   text-align: center;
 }
+
+.bio {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.media {
+  padding-right: 7%;
+  padding-left: 10%;
+}
 .recommended {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   ul {
     justify-content: center;
+  }
+}
+
+.biography {
+  //make box bigger
+  display: flex;
+  align-items: flex-start;
+  label {
+    padding-right: 3px;
+  }
+  textarea {
+    width: 80%;
+    height: 5rem;
   }
 }
