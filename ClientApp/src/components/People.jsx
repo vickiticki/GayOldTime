@@ -3,24 +3,32 @@ import { Link } from 'react-router-dom'
 
 export function People() {
   const [people, setPeople] = useState([])
-  const [searchName, setSearchName] = useState('')
+  const [filterText, setFilterText] = useState('')
   const [howSort, setHowSort] = useState('date')
 
-  useEffect(function () {
-    async function loadPeople() {
-      const response = await fetch('/api/LgbtPeople')
-      console.log('check')
+  useEffect(
+    function () {
+      async function loadPeople() {
+        const url =
+          filterText.length === 0
+            ? `api/LgbtPeople`
+            : `/api/LgbtPeople?filter=${filterText}`
 
-      if (response.ok) {
-        console.log('check 2')
-        const json = await response.json()
+        const response = await fetch(url)
+        console.log('check')
 
-        console.log(json)
-        setPeople(json)
+        if (response.ok) {
+          console.log('check 2')
+          const json = await response.json()
+
+          console.log(json)
+          setPeople(json)
+        }
       }
-    }
-    loadPeople()
-  }, [])
+      loadPeople()
+    },
+    [filterText]
+  )
 
   function displayBirthYear(person) {
     if (person.birthYear < 0) {
@@ -72,8 +80,8 @@ export function People() {
           type="text"
           id="nameSearch"
           placeholder="Name or Country"
-          value={searchName}
-          onChange={(event) => setSearchName(event.target.value)}
+          value={filterText}
+          onChange={(event) => setFilterText(event.target.value)}
         />
       </div>
       <div className="pick the order">

@@ -32,14 +32,21 @@ namespace GayOldTime.Controllers
         // Returns a list of all your LgbtPeople
         //
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<LgbtPerson>>> GetLgbtPeople()
+        public async Task<ActionResult<IEnumerable<LgbtPerson>>> GetLgbtPeople(string filter)
         {
             // Uses the database context in `_context` to request all of the LgbtPeople, sort
             // them by row id and return them as a JSON array.
 
             // UPDATE TO INCLUDE A FILTER WITH AN IF STATEMENT AND ORDER BY YEAR OR ALPHABET
+            if (filter == null)
+            {
+                return await _context.LgbtPeople.OrderBy(row => row.Id).ToListAsync();
 
-            return await _context.LgbtPeople.OrderBy(row => row.Id).ToListAsync();
+            }
+            else
+            {
+                return await _context.LgbtPeople.Where(person => person.Name.ToLower().Contains(filter.ToLower()) || person.Country.ToLower().Contains(filter.ToLower())).ToListAsync();
+            }
 
 
         }
