@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 
 export function SignUp() {
   const history = useHistory()
-  const [erroMessage, setErroMessage] = useState()
+  const [errorMessage, setErrorMessage] = useState()
 
   const [newUser, setNewUser] = useState({
     fullName: '',
@@ -21,7 +21,7 @@ export function SignUp() {
   return (
     <>
       <h1>Sign Up</h1>
-      {erroMessage ? <p>{erroMessage}</p> : null}
+      {errorMessage ? <p>{errorMessage}</p> : null}
       <p>
         <label className="new user username">User Name:</label>{' '}
         <input

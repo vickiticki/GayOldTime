@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 export function SignIn() {
   const history = useHistory()
-  const [erroMessage, setErroMessage] = useState()
+  const [errorMessage, setErrorMessage] = useState()
 
-  const [newUser, setNewUser] = useState({
+  const [user, setUser] = useState({
     fullName: '',
     email: '',
     password: '',
@@ -14,14 +14,14 @@ export function SignIn() {
   function handleStringFieldChange(event) {
     const value = event.target.value
     const fieldName = event.target.name
-    const updatedUser = { ...newUser, [fieldName]: value }
-    setNewUser(updatedUser)
+    const updatedUser = { ...user, [fieldName]: value }
+    setUser(updatedUser)
   }
 
   return (
     <>
       <h1>Sign In</h1>
-      {erroMessage ? <p>{erroMessage}</p> : null}
+      {errorMessage ? <p>{errorMessage}</p> : null}
 
       <p>
         <label className="returning user email">Email:</label>
@@ -29,7 +29,7 @@ export function SignIn() {
           type="text"
           name="email"
           placeholder="email"
-          value={newUser.email}
+          value={user.email}
           onChange={handleStringFieldChange}
         />
       </p>
@@ -39,7 +39,7 @@ export function SignIn() {
           type="text"
           name="password"
           placeholder="password"
-          value={newUser.password}
+          value={user.password}
           onChange={handleStringFieldChange}
         />
       </p>
