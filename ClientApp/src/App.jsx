@@ -2,9 +2,9 @@ import React from 'react'
 import { Link, Route, Switch } from 'react-router-dom'
 import { Header } from './components/Header'
 import { Foot } from './components/Foot'
-import { People } from './components/People'
-import { Person } from './components/Person'
-import { NewPerson } from './components/NewPerson'
+import { People } from './pages/People'
+import { Person } from './pages/Person'
+import { NewPerson } from './pages/NewPerson'
 import './custom.scss'
 
 export function App() {
