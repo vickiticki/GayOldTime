@@ -21,6 +21,7 @@ export function SignUp() {
   return (
     <>
       <h1>Sign Up</h1>
+      {erroMessage ? <p>{erroMessage}</p> : null}
       <p>
         <label className="new user username">User Name:</label>{' '}
         <input
@@ -52,8 +53,6 @@ export function SignUp() {
         />
       </p>
       <button className="make user">Make Account</button>
-
-      {erroMessage ? <p>{erroMessage}</p> : null}
 
       <button className="go home">
         <Link to="/">Home</Link>
