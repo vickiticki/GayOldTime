@@ -16,6 +16,7 @@ namespace GayOldTime.Models
         // Add database tables here
         public DbSet<LgbtPerson> LgbtPeople { get; set; }
         public DbSet<MediaRec> MediaRecs { get; set; }
+        public DbSet<User> Users { get; set; }
 
 
 

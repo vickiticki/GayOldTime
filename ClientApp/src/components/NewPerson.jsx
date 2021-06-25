@@ -62,7 +62,7 @@ export function NewPerson() {
 
     console.log(newPerson.name)
   }
-
+  // do I still use this?
   function birthBCE() {
     if (bbce.checked) {
       console.log('yessir')
@@ -103,7 +103,7 @@ export function NewPerson() {
             />
             <input
               type="number"
-              placeholder="MM"
+              placeholder="DD"
               name="birthday"
               value={bDate}
               onChange={(event) => setBDate(event.target.value)}
