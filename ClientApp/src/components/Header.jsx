@@ -11,7 +11,9 @@ export function Header() {
         <div className="top right">
           <ul>
             <li>Sign In</li>
-            <li>Sign Up</li>
+            <li>
+              <Link to="/SignUp/">Sign Up</Link>
+            </li>
           </ul>
         </div>
       </header>
