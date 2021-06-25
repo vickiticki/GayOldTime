@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useParams, useHistory } from 'react-router-dom'
 
-export function SignUp() {
+export function SignIn() {
   const history = useHistory()
   const [erroMessage, setErroMessage] = useState()
 
@@ -20,19 +20,11 @@ export function SignUp() {
 
   return (
     <>
-      <h1>Sign Up</h1>
+      <h1>Sign In</h1>
+      {erroMessage ? <p>{erroMessage}</p> : null}
+
       <p>
-        <label className="new user username">User Name:</label>{' '}
-        <input
-          type="text"
-          name="username"
-          placeholder="name"
-          value={newUser.fullName}
-          onChange={handleStringFieldChange}
-        />
-      </p>
-      <p>
-        <label className="new user email">Email:</label>
+        <label className="returning user email">Email:</label>
         <input
           type="text"
           name="email"
@@ -42,7 +34,7 @@ export function SignUp() {
         />
       </p>
       <p>
-        <label className="new user password">Password: </label>
+        <label className="returning user password">Password: </label>
         <input
           type="text"
           name="password"
@@ -51,9 +43,7 @@ export function SignUp() {
           onChange={handleStringFieldChange}
         />
       </p>
-      <button className="make user">Make Account</button>
-
-      {erroMessage ? <p>{erroMessage}</p> : null}
+      <button className="signin">Sign In</button>
 
       <button className="go home">
         <Link to="/">Home</Link>

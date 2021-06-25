@@ -6,6 +6,7 @@ import { People } from './pages/People'
 import { Person } from './pages/Person'
 import { NewPerson } from './pages/NewPerson'
 import { SignUp } from './pages/SignUp'
+import { SignIn } from './pages/SignIn'
 import './custom.scss'
 //
 export function App() {
@@ -24,6 +25,9 @@ export function App() {
         </Route>
         <Route exact path="/signup/">
           <SignUp />
+        </Route>
+        <Route exact path="/signin/">
+          <SignIn />
         </Route>
       </Switch>
       <Foot />

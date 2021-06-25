@@ -10,7 +10,9 @@ export function Header() {
         </div>
         <div className="top right">
           <ul>
-            <li>Sign In</li>
+            <li>
+              <Link to="/SignIn">Sign In</Link>
+            </li>
             <li>
               <Link to="/SignUp/">Sign Up</Link>
             </li>
