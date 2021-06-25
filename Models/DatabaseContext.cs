@@ -19,6 +19,11 @@ namespace GayOldTime.Models
         public DbSet<User> Users { get; set; }
 
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().HasIndex(user => user.Email).IsUnique();
+        }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

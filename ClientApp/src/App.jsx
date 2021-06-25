@@ -7,7 +7,7 @@ import { Person } from './pages/Person'
 import { NewPerson } from './pages/NewPerson'
 import { SignUp } from './pages/SignUp'
 import './custom.scss'
-
+//
 export function App() {
   return (
     <>
