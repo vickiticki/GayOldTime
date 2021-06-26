@@ -11,6 +11,23 @@ export function SignUp() {
     password: '',
   })
 
+  async function handleFormSubmit(event) {
+    event.preventDefault()
+
+    const response = await fetch('/api/Users', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newUser),
+    })
+    const apiResponse = await response.json()
+
+    if (apiResponse.status === 400) {
+      setErrorMessage(Object.values(apiResponse.errors).join(' '))
+    } else {
+      history.push('/')
+    }
+  }
+
   function handleStringFieldChange(event) {
     const value = event.target.value
     const fieldName = event.target.name
@@ -23,7 +40,7 @@ export function SignUp() {
       <h1>Sign Up</h1>
       {errorMessage ? <p>{errorMessage}</p> : null}
       <p>
-        <label className="new user username">User Name:</label>{' '}
+        <label className="new user username">Name:</label>{' '}
         <input
           type="text"
           name="fullName"
@@ -52,7 +69,9 @@ export function SignUp() {
           onChange={handleStringFieldChange}
         />
       </p>
-      <button className="make user">Make Account</button>
+      <button className="make user" onClick={handleFormSubmit}>
+        Make Account
+      </button>
 
       <button className="go home">
         <Link to="/">Home</Link>
