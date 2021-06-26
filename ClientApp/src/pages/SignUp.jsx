@@ -26,7 +26,7 @@ export function SignUp() {
         <label className="new user username">User Name:</label>{' '}
         <input
           type="text"
-          name="username"
+          name="fullName"
           placeholder="name"
           value={newUser.fullName}
           onChange={handleStringFieldChange}
