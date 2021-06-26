@@ -6,7 +6,6 @@ export function SignIn() {
   const [errorMessage, setErrorMessage] = useState()
 
   const [user, setUser] = useState({
-    fullName: '',
     email: '',
     password: '',
   })
