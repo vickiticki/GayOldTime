@@ -23,7 +23,7 @@ export function SignIn() {
       {errorMessage ? <p>{errorMessage}</p> : null}
 
       <p>
-        <label className="returning user email">Email:</label>
+        <label className="returning user email">Email: </label>
         <input
           type="text"
           name="email"
