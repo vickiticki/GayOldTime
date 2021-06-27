@@ -13,6 +13,7 @@ export function Person() {
     deathdate: '',
     country: '',
     biography: '',
+    photoURL: '',
     mediaRecs: [],
   })
 
@@ -128,7 +129,10 @@ export function Person() {
           <li>Died: {person.deathdate}</li>
           <li>Country: {person.country}</li>
         </ul>
-        <div>Profile Picture Here</div>
+        {/* <div>Profile Picture Here</div> */}
+        {person.photoURL ? (
+          <img alt="Person Photo" width={200} src={person.photoURL} />
+        ) : null}
       </div>
       <div className="quick little bio">
         <p>{person.biography}</p>

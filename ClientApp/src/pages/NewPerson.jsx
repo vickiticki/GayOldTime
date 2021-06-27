@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDropzone } from 'react-dropzone'
+import { authHeader } from '../auth'
 
 export function NewPerson() {
   const history = useHistory()
+  const [errorMessage, setErrorMessage] = useState('')
+  const [isUploading, setIsUploading] = useState(false)
 
   const [newPerson, setNewPerson] = useState({
     name: '',
@@ -12,6 +15,7 @@ export function NewPerson() {
     deathdate: '',
     country: '',
     biography: '',
+    photoURL: '',
   })
 
   const [bYear, setBYear] = useState('')
@@ -64,15 +68,70 @@ export function NewPerson() {
     console.log(newPerson.name)
   }
 
-  function onDropFile(acceptedFiles) {
+  // function onDropFile(acceptedFiles) {
+  //   // Do something with the files
+  //   const fileToUpload = acceptedFiles[0]
+  //   console.log(fileToUpload)
+  // }
+
+  async function onDropFile(acceptedFiles) {
     // Do something with the files
     const fileToUpload = acceptedFiles[0]
     console.log(fileToUpload)
+
+    // Create a formData object so we can send this
+    // to the API that is expecting som form data.
+    const formData = new FormData()
+
+    // Append a field that is the form upload itself
+    formData.append('file', fileToUpload)
+
+    setIsUploading(true)
+
+    try {
+      // Use fetch to send an authorization header and
+      // a body containing the form data with the file
+      const response = await fetch('/api/Uploads', {
+        method: 'POST',
+        headers: {
+          ...authHeader(),
+        },
+        body: formData,
+      })
+
+      // If we receive a 200 OK response, set the
+      // URL of the photo in our state so that it is
+      // sent along when creating the restaurant,
+      // otherwise show an error
+      if (response.status === 200) {
+        const apiResponse = await response.json()
+
+        const url = apiResponse.url
+
+        setNewPerson({ ...newPerson, photoURL: url })
+      } else {
+        setErrorMessage('Unable to upload image')
+      }
+    } catch {
+      // Catch any network errors and show the user we could not process their upload
+      // console.debug(error)
+      setErrorMessage('Unable to upload image')
+    }
+    setIsUploading(false)
   }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: onDropFile,
   })
+  let dropZoneMessage = 'Drag a picture of the person here to upload!'
+
+  if (isUploading) {
+    dropZoneMessage = 'Uploading...'
+  }
+
+  if (isDragActive) {
+    dropZoneMessage = 'Drop the files here ...'
+  }
 
   // do I still use this?
   function birthBCE() {
@@ -86,6 +145,7 @@ export function NewPerson() {
   return (
     <>
       <h1 className="new person page title">New Person</h1>
+      {errorMessage}
       <form onSubmit={handleFormSubmit}>
         <p>
           <label className="input for name">Name: </label>
@@ -165,16 +225,23 @@ export function NewPerson() {
               onChange={handleStringFieldChange}
             />
           </p>
-          <p className="form-input">
+          {/* <p className="form-input">
             <label htmlFor="picture">Picture</label>
             <input type="file" name="picture" />
-          </p>
+          </p> */}
+          {newPerson.photoURL ? (
+            <p>
+              <img alt="Person" width={200} src={newPerson.photoURL} />
+            </p>
+          ) : null}
+
           <div className="file-drop-zone">
             <div {...getRootProps()}>
               <input {...getInputProps()} />
-              {isDragActive
+              {/* {isDragActive
                 ? 'Drop the files here ...'
-                : 'Drag a picture of the restaurant here to upload!'}
+                : 'Drag a picture of the person here to upload!'} */}
+              {dropZoneMessage}
             </div>
           </div>
         </div>
