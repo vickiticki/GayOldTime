@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { useDropzone } from 'react-dropzone'
 
 export function NewPerson() {
   const history = useHistory()
@@ -62,6 +63,17 @@ export function NewPerson() {
 
     console.log(newPerson.name)
   }
+
+  function onDropFile(acceptedFiles) {
+    // Do something with the files
+    const fileToUpload = acceptedFiles[0]
+    console.log(fileToUpload)
+  }
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop: onDropFile,
+  })
+
   // do I still use this?
   function birthBCE() {
     if (bbce.checked) {
@@ -153,8 +165,18 @@ export function NewPerson() {
               onChange={handleStringFieldChange}
             />
           </p>
-          {/* this part will probably move to the bottom */}
-          <div>Profile Picture Here</div>
+          <p className="form-input">
+            <label htmlFor="picture">Picture</label>
+            <input type="file" name="picture" />
+          </p>
+          <div className="file-drop-zone">
+            <div {...getRootProps()}>
+              <input {...getInputProps()} />
+              {isDragActive
+                ? 'Drop the files here ...'
+                : 'Drag a picture of the restaurant here to upload!'}
+            </div>
+          </div>
         </div>
 
         <p className="input for biography">

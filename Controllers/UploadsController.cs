@@ -52,7 +52,7 @@ namespace GayOldTime.Controllers
         [HttpPost]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [RequestSizeLimit(10_000_000)]
-        public ActionResult Upload(IFormFile file)
+        public async System.Threading.Tasks.Task<ActionResult> UploadAsync(IFormFile file)
         {
             // Check this content type against a set of allowed content types
             var contentType = file.ContentType.ToLower();

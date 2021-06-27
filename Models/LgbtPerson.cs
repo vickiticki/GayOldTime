@@ -29,5 +29,10 @@ namespace GayOldTime
 
         public List<MediaRec> MediaRecs { get; set; }
 
+        //user
+
+        //photo
+        public string PhotoUrl { get; set; }
+
     }
 }
