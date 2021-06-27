@@ -31,6 +31,15 @@ namespace GayOldTime.Controllers
             CLOUDINARY_API_SECRET = config["CLOUDINARY_API_SECRET"];
         }
 
+        private readonly HashSet<string> VALID_CONTENT_TYPES = new HashSet<string> {
+    "image/jpg",
+    "image/jpeg",
+    "image/pjpeg",
+    "image/gif",
+    "image/x-png",
+    "image/png",
+};
+
         // POST: api/Uploads
         //
         // Creates a new uploaded file
@@ -43,9 +52,41 @@ namespace GayOldTime.Controllers
         [HttpPost]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [RequestSizeLimit(10_000_000)]
-        public ActionResult Upload()
+        public ActionResult Upload(IFormFile file)
         {
-            return Ok();
+            // Check this content type against a set of allowed content types
+            var contentType = file.ContentType.ToLower();
+            if (!VALID_CONTENT_TYPES.Contains(contentType))
+            {
+                // Return a 400 Bad Request when the content type is not allowed
+                return BadRequest("Not Valid Image");
+            }
+            // Create and configure a client object to be able to upload to Cloudinary
+            var cloudinaryClient = new Cloudinary(new Account(CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET));
+
+            // Create an object describing the upload we are going to process.
+            // We will provide the file name and the stream of the content itself.
+            var uploadParams = new ImageUploadParams()
+            {
+                File = new FileDescription(file.FileName, file.OpenReadStream())
+            };
+
+            // Upload the file to the server
+            ImageUploadResult result = await cloudinaryClient.UploadLargeAsync(uploadParams);
+
+            // If the status code is a "OK" then the upload was accepted so we will return
+            // the URL to the client
+            if (result.StatusCode == HttpStatusCode.OK)
+            {
+                var urlOfUploadedFile = result.SecureUrl.AbsoluteUri;
+
+                return Ok(new { url = urlOfUploadedFile });
+            }
+            else
+            {
+                // Otherwise there was some failure in uploading
+                return BadRequest("Upload failed");
+            }
         }
     }
 }
