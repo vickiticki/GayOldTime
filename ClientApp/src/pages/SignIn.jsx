@@ -17,9 +17,29 @@ export function SignIn() {
     setUser(updatedUser)
   }
 
+  async function handleFormSubmit(event) {
+    event.preventDefault()
+
+    const response = await fetch('/api/Sessions', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(user),
+    })
+
+    const apiResponse = await response.json()
+
+    if (apiResponse.status === 400) {
+      setErrorMessage(Object.values(apiResponse.errors).join(' '))
+    } else {
+      // recordAuthentication(apiResponse)
+      window.location.assign('/')
+    }
+  }
+
   return (
     <>
       <h1>Sign In</h1>
+
       {errorMessage ? <p>{errorMessage}</p> : null}
 
       <p>
@@ -42,7 +62,10 @@ export function SignIn() {
           onChange={handleStringFieldChange}
         />
       </p>
-      <button className="signin">Sign In</button>
+      <form onSubmit={handleFormSubmit}></form>
+      <button className="signin" onClick={handleFormSubmit}>
+        Sign In
+      </button>
 
       <button className="go home">
         <Link to="/">Home</Link>
