@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
+import { authHeader } from '../auth'
 
 export function Person() {
   const params = useParams()
   const id = params.id
-  // const history = useHistory()
+  const history = useHistory()
 
   const [person, setPerson] = useState({
     name: '',
@@ -139,6 +140,19 @@ export function Person() {
     reloadPerson()
   }
 
+  async function handleDelete(event) {
+    event.preventDefault()
+
+    const response = await fetch(`/api/LgbtPeople/${id}`, {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json', ...authHeader() },
+    })
+
+    if (response.status === 200 || response.status === 204) {
+      history.push('/')
+    }
+  }
+
   return (
     <>
       <h1 className="Person page title">{person.name}</h1>
@@ -223,6 +237,7 @@ export function Person() {
       </button>
       <button>Edit</button>
       {/* <p>Created by {person.userId}</p> */}
+      <button onClick={handleDelete}>Delete Person</button>
     </>
   )
 }
