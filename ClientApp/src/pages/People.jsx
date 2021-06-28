@@ -80,6 +80,7 @@ export function People() {
           type="text"
           id="nameSearch"
           placeholder="Name or Country"
+          className="searchBox"
           value={filterText}
           onChange={(event) => setFilterText(event.target.value)}
         />
