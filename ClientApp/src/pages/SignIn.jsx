@@ -42,27 +42,28 @@ export function SignIn() {
 
       {errorMessage ? <p>{errorMessage}</p> : null}
 
-      <p>
-        <label className="returning user email">Email: </label>
-        <input
-          type="text"
-          name="email"
-          placeholder="email"
-          value={user.email}
-          onChange={handleStringFieldChange}
-        />
-      </p>
-      <p>
-        <label className="returning user password">Password: </label>
-        <input
-          type="text"
-          name="password"
-          placeholder="password"
-          value={user.password}
-          onChange={handleStringFieldChange}
-        />
-      </p>
-      <form onSubmit={handleFormSubmit}></form>
+      <form onSubmit={handleFormSubmit}>
+        <p>
+          <label className="returning user email">Email: </label>
+          <input
+            type="text"
+            name="email"
+            placeholder="email"
+            value={user.email}
+            onChange={handleStringFieldChange}
+          />
+        </p>
+        <p>
+          <label className="returning user password">Password: </label>
+          <input
+            type="text"
+            name="password"
+            placeholder="password"
+            value={user.password}
+            onChange={handleStringFieldChange}
+          />
+        </p>
+      </form>
       <button className="signin" onClick={handleFormSubmit}>
         Sign In
       </button>
