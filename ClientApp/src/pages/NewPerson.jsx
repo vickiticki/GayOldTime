@@ -108,7 +108,7 @@ export function NewPerson() {
 
         setNewPerson({ ...newPerson, photoURL: url })
       } else {
-        setErrorMessage('Unable to upload image')
+        setErrorMessage('Unable to upload image oops')
       }
     } catch {
       // Catch any network errors and show the user we could not process their upload
