@@ -177,7 +177,7 @@ export function Person() {
             <input
               type="text"
               name="nonfiction"
-              className="add nonfic media"
+              className="add nonfic"
               value={newNFMedia.item}
               onChange={handleNonfictionChange}
             />
@@ -204,7 +204,7 @@ export function Person() {
             <input
               type="text"
               name="fiction"
-              className="add fic media"
+              className="add fic"
               value={newFMedia.item}
               onChange={handleFictionChange}
             />
