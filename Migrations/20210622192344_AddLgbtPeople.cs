@@ -6,9 +6,9 @@ namespace GayOldTime.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Birthdate",
-                table: "LgbtPeople");
+            // migrationBuilder.DropColumn(
+            //     name: "Birthdate",
+            //     table: "LgbtPeople");
 
             migrationBuilder.AddColumn<int>(
                 name: "LgbtPersonId",
@@ -16,18 +16,18 @@ namespace GayOldTime.Migrations
                 type: "integer",
                 nullable: true);
 
-            migrationBuilder.AddColumn<int>(
-                name: "BirthYear",
-                table: "LgbtPeople",
-                type: "integer",
-                nullable: false,
-                defaultValue: 0);
+            // migrationBuilder.AddColumn<int>(
+            //     name: "BirthYear",
+            //     table: "LgbtPeople",
+            //     type: "integer",
+            //     nullable: false,
+            //     defaultValue: 0);
 
-            migrationBuilder.AddColumn<string>(
-                name: "Birthday",
-                table: "LgbtPeople",
-                type: "text",
-                nullable: true);
+            // migrationBuilder.AddColumn<string>(
+            //     name: "Birthday",
+            //     table: "LgbtPeople",
+            //     type: "text",
+            //     nullable: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_MediaRecs_LgbtPersonId",
