@@ -29,6 +29,10 @@ export function NewPerson() {
   const bbce = document.querySelector('#bbce')
   const dbce = document.querySelector('#dbce')
 
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop: onDropFile,
+  })
+
   async function handleFormSubmit(event) {
     event.preventDefault()
 
@@ -65,14 +69,8 @@ export function NewPerson() {
 
     setNewPerson({ ...newPerson, [fieldName]: value })
 
-    console.log(newPerson.name)
+    // console.log(newPerson.name)
   }
-
-  // function onDropFile(acceptedFiles) {
-  //   // Do something with the files
-  //   const fileToUpload = acceptedFiles[0]
-  //   console.log(fileToUpload)
-  // }
 
   async function onDropFile(acceptedFiles) {
     // Do something with the files
@@ -120,9 +118,6 @@ export function NewPerson() {
     setIsUploading(false)
   }
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop: onDropFile,
-  })
   let dropZoneMessage = 'Drag a picture of the person here to upload!'
 
   if (isUploading) {

@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -32,13 +33,13 @@ namespace GayOldTime.Controllers
         }
 
         private readonly HashSet<string> VALID_CONTENT_TYPES = new HashSet<string> {
-    "image/jpg",
-    "image/jpeg",
-    "image/pjpeg",
-    "image/gif",
-    "image/x-png",
-    "image/png",
-};
+            "image/jpg",
+            "image/jpeg",
+            "image/pjpeg",
+            "image/gif",
+            "image/x-png",
+            "image/png",
+        };
 
         // POST: api/Uploads
         //
@@ -52,7 +53,7 @@ namespace GayOldTime.Controllers
         [HttpPost]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [RequestSizeLimit(10_000_000)]
-        public async System.Threading.Tasks.Task<ActionResult> UploadAsync(IFormFile file)
+        public async Task<ActionResult> UploadAsync(IFormFile file)
         {
             // Check this content type against a set of allowed content types
             var contentType = file.ContentType.ToLower();
