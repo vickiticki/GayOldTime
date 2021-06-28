@@ -134,9 +134,14 @@ namespace GayOldTime.Controllers
         // supplies to the names of the attributes of our LgbtPerson POCO class. This represents the
         // new values for the record.
         //
+        // eventually I might use this but not right now
+        // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost]
         public async Task<ActionResult<LgbtPerson>> PostLgbtPerson(LgbtPerson lgbtPerson)
         {
+
+            // lgbtPerson.UserId = GetCurrentUserId();
+
             // Indicate to the database context we want to add this new record
             _context.LgbtPeople.Add(lgbtPerson);
             await _context.SaveChangesAsync();
@@ -178,5 +183,12 @@ namespace GayOldTime.Controllers
         {
             return _context.LgbtPeople.Any(lgbtPerson => lgbtPerson.Id == id);
         }
+
+        // // Private helper method to get the JWT claim related to the user ID
+        // private int GetCurrentUserId()
+        // {
+        //     // Get the User Id from the claim and then parse it as an integer.
+        //     return int.Parse(User.Claims.FirstOrDefault(claim => claim.Type == "Id").Value);
+        // }
     }
 }

@@ -15,6 +15,7 @@ export function Person() {
     biography: '',
     photoURL: '',
     mediaRecs: [],
+    userId: 0,
   })
 
   const [newFMedia, setNewFMedia] = useState({
@@ -216,6 +217,7 @@ export function Person() {
         <Link to="/">Home</Link>
       </button>
       <button>Edit</button>
+      {/* <p>Created by {person.userId}</p> */}
     </>
   )
 }

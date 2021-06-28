@@ -16,6 +16,7 @@ export function NewPerson() {
     country: '',
     biography: '',
     photoURL: '',
+    // userId: 0,
   })
 
   const [bYear, setBYear] = useState('')
@@ -52,6 +53,7 @@ export function NewPerson() {
     const response = await fetch('/api/LgbtPeople', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
+      // , ...authHeader
       body: JSON.stringify(newPerson),
     })
     if (response.ok) {
@@ -62,6 +64,17 @@ export function NewPerson() {
 
     console.log('form submitted')
   }
+
+  // if (response.status === 401) {
+  //   setErrorMessage('Not Authorized')
+  // } else {
+  //   if (response.status === 400) {
+  //     const json = await response.json()
+  //     setErrorMessage(Object.values(json.errors).join(' '))
+  //   } else {
+  //     history.push('/')
+  //   }
+  // }
 
   function handleStringFieldChange(event) {
     const value = event.target.value

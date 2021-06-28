@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { recordAuthentication } from '../auth'
 
 export function SignIn() {
   const history = useHistory()
@@ -31,7 +32,7 @@ export function SignIn() {
     if (apiResponse.status === 400) {
       setErrorMessage(Object.values(apiResponse.errors).join(' '))
     } else {
-      // recordAuthentication(apiResponse)
+      recordAuthentication(apiResponse)
       window.location.assign('/')
     }
   }
