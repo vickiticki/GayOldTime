@@ -39,6 +39,7 @@ export function Person() {
 
       setPerson(apiData)
     }
+    console.log(person)
   }
 
   useEffect(() => {
@@ -52,6 +53,7 @@ export function Person() {
       }
     }
     fetchPerson()
+    console.log(person)
   }, [id])
 
   async function handleNewFMediaSubmit(event) {
@@ -117,22 +119,28 @@ export function Person() {
     })
   }
 
+  function getPic(person) {
+    return person.photoUrl
+  }
+
   return (
     <>
       <h1 className="Person page title">{person.name}</h1>
       <div className="basic info">
         <ul className="important facts">
-          <li>
-            Born: {displayBirth(person)}
-            {/* Born: {person.birthYear.toString()}-{person.birthday} */}
-          </li>
+          <li>Born: {displayBirth(person)}</li>
           <li>Died: {person.deathdate}</li>
           <li>Country: {person.country}</li>
         </ul>
-        {/* <div>Profile Picture Here</div> */}
+        <img alt="person picture" width={200} src={getPic(person)} />
+      </div>
+
+      <div className="Picture">
+        {/* No clue why this doesn't work */}
+        {/* where picture
         {person.photoURL ? (
-          <img alt="Person Photo" width={200} src={person.photoURL} />
-        ) : null}
+          <img alt="Person" width={200} src={person.photoURL} />
+        ) : null} */}
       </div>
       <div className="quick little bio">
         <p>{person.biography}</p>
