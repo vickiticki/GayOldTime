@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams, useHistory } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 export function Person() {
   const params = useParams()
   const id = params.id
-  const history = useHistory()
+  // const history = useHistory()
 
   const [person, setPerson] = useState({
     name: '',
@@ -131,6 +131,11 @@ export function Person() {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' },
     })
+    if (response.ok) {
+      console.log('Bye media!')
+    } else {
+      console.log('Oopsie Daisy...')
+    }
     reloadPerson()
   }
 

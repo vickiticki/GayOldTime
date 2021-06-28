@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { recordAuthentication } from '../auth'
 
 export function SignIn() {
-  const history = useHistory()
+  // const history = useHistory()
   const [errorMessage, setErrorMessage] = useState()
 
   const [user, setUser] = useState({
