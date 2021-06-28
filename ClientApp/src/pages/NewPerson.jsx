@@ -112,7 +112,7 @@ export function NewPerson() {
       }
     } catch {
       // Catch any network errors and show the user we could not process their upload
-      // console.debug(error)
+
       setErrorMessage('Unable to upload image')
     }
     setIsUploading(false)
