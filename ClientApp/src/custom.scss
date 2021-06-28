@@ -172,3 +172,12 @@ h3 {
   margin-top: 2px;
   width: 50%;
 }
+
+.end {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+  .home {
+    font-size: 20px;
+  }
+}

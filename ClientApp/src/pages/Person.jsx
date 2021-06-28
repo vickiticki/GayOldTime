@@ -232,12 +232,14 @@ export function Person() {
           </li>
         </ul>
       </div>
-      <button className="go home">
-        <Link to="/">Home</Link>
-      </button>
-      <button>Edit</button>
-      {/* <p>Created by {person.userId}</p> */}
-      <button onClick={handleDelete}>Delete Person</button>
+      <div className="person end buttons">
+        <button>Edit</button>
+        <button className="go home">
+          <Link to="/">Home</Link>
+        </button>
+        {/* <p>Created by {person.userId}</p> */}
+        <button onClick={handleDelete}>Delete</button>
+      </div>
     </>
   )
 }
