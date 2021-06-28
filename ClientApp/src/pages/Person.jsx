@@ -123,6 +123,16 @@ export function Person() {
     return person.photoUrl
   }
 
+  async function removeMediaRec(event) {
+    const idToRemove = event.target.value
+    console.log(idToRemove)
+    const response = await fetch(`/api/MediaRec/${idToRemove}`, {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json' },
+    })
+    reloadPerson()
+  }
+
   return (
     <>
       <h1 className="Person page title">{person.name}</h1>
@@ -152,12 +162,22 @@ export function Person() {
           {person.mediaRecs
             .filter((x) => x.fiction === false)
             .map((media) => (
-              <li key={media.id}>{media.item}</li>
+              <li key={media.id}>
+                {media.item}
+                <button
+                  className="deletion button"
+                  value={media.id}
+                  onClick={removeMediaRec}
+                >
+                  Delete
+                </button>
+              </li>
             ))}
           <li>
             <input
               type="text"
               name="nonfiction"
+              className="add nonfic media"
               value={newNFMedia.item}
               onChange={handleNonfictionChange}
             />
@@ -169,12 +189,22 @@ export function Person() {
           {person.mediaRecs
             .filter((x) => x.fiction === true)
             .map((media) => (
-              <li key={media.id}>{media.item}</li>
+              <li key={media.id}>
+                {media.item}
+                <button
+                  className="deletion button"
+                  value={media.id}
+                  onClick={removeMediaRec}
+                >
+                  Delete
+                </button>
+              </li>
             ))}
           <li>
             <input
               type="text"
               name="fiction"
+              className="add fic media"
               value={newFMedia.item}
               onChange={handleFictionChange}
             />
