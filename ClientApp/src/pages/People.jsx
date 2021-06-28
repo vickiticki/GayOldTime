@@ -104,7 +104,7 @@ export function People() {
         ))}
       </ul>
 
-      <button className="add person button">
+      <button className="create person button">
         <Link to="/newperson">Add a Person</Link>
       </button>
     </>
