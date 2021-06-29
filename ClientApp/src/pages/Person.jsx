@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
-import { authHeader, isLoggedIn } from '../auth'
+import { authHeader, isLoggedIn, getUser } from '../auth'
 
 export function Person() {
   const params = useParams()
   const id = params.id
+  const user = getUser()
   const history = useHistory()
 
   const [person, setPerson] = useState({
@@ -16,6 +17,7 @@ export function Person() {
     biography: '',
     photoURL: '',
     mediaRecs: [],
+    comments: [],
     userId: 0,
     maker: '',
     lastUpdater: '',
@@ -33,6 +35,12 @@ export function Person() {
     fiction: false,
     personId: id,
     LgbtPersonId: id,
+  })
+
+  const [newComment, setNewComment] = useState({
+    body: '',
+    LgbtPersonId: id,
+    userId: user.Id,
   })
 
   async function reloadPerson() {
@@ -125,6 +133,31 @@ export function Person() {
 
   function getPic(person) {
     return person.photoUrl
+  }
+
+  function handleCommentChange(event) {
+    setNewComment({
+      body: event.target.value,
+      LgbtPersonId: id,
+      userId: user.Id,
+    })
+  }
+  async function handlePostComment(event) {
+    event.preventDefault()
+    const response = await fetch(`/api/Commentss`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newComment),
+    })
+
+    if (response.ok) {
+      setNewComment({
+        body: '',
+        LgbtPersonId: id,
+        userId: user.Id,
+      })
+      reloadPerson()
+    }
   }
 
   async function removeMediaRec(event) {
@@ -232,7 +265,7 @@ export function Person() {
             ))}
           <li>
             <input
-              type="text"
+              type="textarea"
               name="fiction"
               className="add fic"
               value={newFMedia.item}
@@ -247,14 +280,8 @@ export function Person() {
           <Link to="/">Home</Link>
         </button>
       </div>
+
       {editButtons}
-      {/* <div className="person end buttons">
-        <button>
-        <Link to={`/editperson/${id}`}>Edit</Link>
-        </button>
-        <button onClick={handleDelete}>Delete</button>
-      </div> */}
-      {/* <p>Created by {person.userId}</p> */}
       <p>
         Page made by {person.maker} | Last Edited by {person.lastUpdater}
       </p>

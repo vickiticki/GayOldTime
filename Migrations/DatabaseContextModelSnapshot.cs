@@ -36,6 +36,10 @@ namespace GayOldTime.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("LgbtPersonId");
+
+                    b.HasIndex("UserId");
+
                     b.ToTable("Comments");
                 });
 
@@ -136,6 +140,23 @@ namespace GayOldTime.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("GayOldTime.Comment", b =>
+                {
+                    b.HasOne("GayOldTime.LgbtPerson", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("LgbtPersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GayOldTime.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("GayOldTime.MediaRec", b =>
                 {
                     b.HasOne("GayOldTime.LgbtPerson", null)
@@ -147,6 +168,8 @@ namespace GayOldTime.Migrations
 
             modelBuilder.Entity("GayOldTime.LgbtPerson", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("MediaRecs");
                 });
 #pragma warning restore 612, 618
