@@ -17,6 +17,7 @@ namespace GayOldTime.Models
         public DbSet<LgbtPerson> LgbtPeople { get; set; }
         public DbSet<MediaRec> MediaRecs { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
