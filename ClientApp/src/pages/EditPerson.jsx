@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import { useDropzone } from 'react-dropzone'
-import { authHeader } from '../auth'
+import { authHeader, isLoggedIn } from '../auth'
 
 export function EditPerson() {
   const history = useHistory()
@@ -182,6 +182,15 @@ export function EditPerson() {
     dropZoneMessage = 'Drop the files here ...'
   }
 
+  // only show submit button if logged in
+  const submitButton = isLoggedIn() ? (
+    dDate === '' ? (
+      <input type="submit" value="Looks Good" onClick={handleFormSubmit} />
+    ) : (
+      <input type="submit" value="Submit" onClick={handleFormSubmit} />
+    )
+  ) : null
+
   // do I still use this?
   function birthBCE() {
     if (bbce.checked) {
@@ -302,17 +311,7 @@ export function EditPerson() {
           ></textarea>
         </p>
 
-        <p className="home">
-          {dDate === '' ? (
-            <input
-              type="submit"
-              value="Looks Good"
-              onClick={handleFormSubmit}
-            />
-          ) : (
-            <input type="submit" value="Submit" onClick={handleFormSubmit} />
-          )}
-        </p>
+        <p className="home">{submitButton}</p>
       </form>
       <div className="home">
         <button className="go home">
