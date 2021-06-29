@@ -40,9 +40,12 @@ export function EditPerson() {
   const [bMonth, setBMonth] = useState('')
   const [bDate, setBDate] = useState('')
 
-  const [dYear, setDYear] = useState(person.deathdate.split('-')[0])
-  const [dMonth, setDMonth] = useState(person.deathdate.split('-')[1])
-  const [dDate, setDDate] = useState(person.deathdate.split('-')[2])
+  const dy = person.deathdate.split('-')[0]
+  const dm = person.deathdate.split('-')[1]
+  const dd = person.deathdate.split('-')[2]
+  const [dYear, setDYear] = useState('')
+  const [dMonth, setDMonth] = useState('')
+  const [dDate, setDDate] = useState('')
 
   const bbce = document.querySelector('#bbce')
   const dbce = document.querySelector('#dbce')
@@ -53,6 +56,8 @@ export function EditPerson() {
 
   async function handleFormSubmit(event) {
     event.preventDefault()
+
+    //if birth/death dates aren't changed
     if (bDate === '') {
       setBDate(bd)
     }
@@ -62,6 +67,16 @@ export function EditPerson() {
     if (bYear === '') {
       setBYear(by)
     }
+    if (dDate === '') {
+      setDDate(dd)
+    }
+    if (dMonth === '') {
+      setDMonth(dm)
+    }
+    if (dYear === '') {
+      setDYear(dy)
+    }
+    // handle bce
     if (bbce.checked) {
       person.birthYear = 0 - parseInt(bYear)
       // person.birthday = `${bMonth}-${bDate}`
@@ -227,21 +242,21 @@ export function EditPerson() {
             <label>Deathdate: </label>
             <input
               type="number"
-              placeholder="YYYY"
+              placeholder={dy}
               name="deathyear"
               value={dYear}
               onChange={(event) => setDYear(event.target.value)}
             />
             <input
               type="number"
-              placeholder="MM"
+              placeholder={dm}
               name="deathmonth"
               value={dMonth}
               onChange={(event) => setDMonth(event.target.value)}
             />
             <input
               type="number"
-              placeholder="DD"
+              placeholder={dd}
               name="deathday"
               value={dDate}
               onChange={(event) => setDDate(event.target.value)}
@@ -309,9 +324,11 @@ export function EditPerson() {
           <input type="submit" value="Submit" onClick={handleFormSubmit} />
         </p>
       </form>
-      <button className="go home">
-        <Link to="/">Home</Link>
-      </button>
+      <div className="home">
+        <button className="go home">
+          <Link to="/">Home</Link>
+        </button>
+      </div>
     </>
   )
 }
