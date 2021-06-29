@@ -72,10 +72,11 @@ export function SignUp() {
       <button className="make user" onClick={handleFormSubmit}>
         Make Account
       </button>
-
-      <button className="go home">
-        <Link to="/">Home</Link>
-      </button>
+      <div className="home">
+        <button className="go home">
+          <Link to="/">Home</Link>
+        </button>
+      </div>
     </>
   )
 }

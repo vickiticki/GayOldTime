@@ -68,10 +68,11 @@ export function SignIn() {
       <button className="signin" onClick={handleFormSubmit}>
         Sign In
       </button>
-
-      <button className="go home">
-        <Link to="/">Home</Link>
-      </button>
+      <div className="home">
+        <button className="go home">
+          <Link to="/">Home</Link>
+        </button>
+      </div>
     </>
   )
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { isLoggedIn } from '../auth'
 
 export function People() {
   const [people, setPeople] = useState([])
@@ -104,10 +105,11 @@ export function People() {
           </li>
         ))}
       </ul>
-
-      <button className="create person button">
-        <Link to="/newperson">Add a Person</Link>
-      </button>
+      {isLoggedIn() ? (
+        <button className="create person button">
+          <Link to="/newperson">Add a Person</Link>
+        </button>
+      ) : null}
     </>
   )
 }
