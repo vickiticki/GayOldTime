@@ -1,28 +1,45 @@
-import { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import { useDropzone } from 'react-dropzone'
 import { authHeader } from '../auth'
 
-export function NewPerson() {
+export function EditPerson() {
   const history = useHistory()
+  const params = useParams()
+  const id = params.id
   const [errorMessage, setErrorMessage] = useState('')
   const [isUploading, setIsUploading] = useState(false)
 
-  const [newPerson, setNewPerson] = useState({
+  const [person, setPerson] = useState({
     name: '',
     birthYear: 0,
     birthday: '',
-    deathdate: '',
+    Deathdate: '',
     country: '',
     biography: '',
     photoURL: '',
     // userId: 0,
   })
 
-  const [bYear, setBYear] = useState('')
-  const [bMonth, setBMonth] = useState('')
-  const [bDate, setBDate] = useState('')
+  useEffect(() => {
+    async function fetchPerson() {
+      const response = await fetch(`/api/LgbtPeople/${id}`)
+      if (response.ok) {
+        const apiData = await response.json()
+        setPerson(apiData)
+      }
+    }
+    fetchPerson()
+    console.log(person)
+  }, [id])
 
+  const [bYear, setBYear] = useState(Math.abs(person.birthYear))
+  const [bMonth, setBMonth] = useState(person.birthday.split('-')[0])
+  const [bDate, setBDate] = useState(person.birthday.split('-')[1])
+
+  // const [dYear, setDYear] = useState(person.Deathdate('-')[0])
+  // const [dMonth, setDMonth] = useState(person.Deathdate('-')[1])
+  // const [dDate, setDDate] = useState(person.Deathdate('-')[2])
   const [dYear, setDYear] = useState('')
   const [dMonth, setDMonth] = useState('')
   const [dDate, setDDate] = useState('')
@@ -38,23 +55,23 @@ export function NewPerson() {
     event.preventDefault()
 
     if (bbce.checked) {
-      newPerson.birthYear = 0 - parseInt(bYear)
-      newPerson.birthday = `${bMonth}-${bDate}`
+      person.birthYear = 0 - parseInt(bYear)
+      // person.birthday = `${bMonth}-${bDate}`
     } else {
-      newPerson.birthYear = parseInt(bYear)
-      newPerson.birthday = `${bMonth}-${bDate}`
+      person.birthYear = parseInt(bYear)
     }
+    person.birthday = `${bMonth}-${bDate}`
     if (dbce.checked) {
-      newPerson.deathdate = `${dYear}-${dMonth}-${dDate} BCE`
+      person.deathdate = `${dYear}-${dMonth}-${dDate} BCE`
     } else {
-      newPerson.deathdate = `${dYear}-${dMonth}-${dDate}`
+      person.deathdate = `${dYear}-${dMonth}-${dDate}`
     }
 
-    const response = await fetch('/api/LgbtPeople', {
-      method: 'POST',
+    const response = await fetch(`/api/LgbtPeople/${id}}`, {
+      method: 'PUT',
       headers: { 'content-type': 'application/json' },
       // , ...authHeader
-      body: JSON.stringify(newPerson),
+      body: JSON.stringify(person),
     })
     if (response.ok) {
       history.push('/')
@@ -80,7 +97,7 @@ export function NewPerson() {
     const value = event.target.value
     const fieldName = event.target.name
 
-    setNewPerson({ ...newPerson, [fieldName]: value })
+    setPerson({ ...person, [fieldName]: value })
 
     // console.log(newPerson.name)
   }
@@ -119,7 +136,7 @@ export function NewPerson() {
 
         const url = apiResponse.url
 
-        setNewPerson({ ...newPerson, photoURL: url })
+        setPerson({ ...person, photoURL: url })
       } else {
         setErrorMessage('Unable to upload image oops')
       }
@@ -154,13 +171,14 @@ export function NewPerson() {
     <>
       <h1 className="new person page title">New Person</h1>
       {errorMessage}
+
       <form onSubmit={handleFormSubmit}>
         <p>
           <label className="input for name">Name: </label>
           <input
             type="text"
             name="name"
-            value={newPerson.name}
+            value={person.name}
             onChange={handleStringFieldChange}
           />
         </p>
@@ -169,14 +187,14 @@ export function NewPerson() {
             <label>Birthdate: </label>
             <input
               type="number"
-              placeholder="YYYY"
+              // placeholder="YYYY"
               name="birthyear"
               value={bYear}
               onChange={(event) => setBYear(event.target.value)}
             />
             <input
               type="number"
-              placeholder="MM"
+              // placeholder="MM"
               name="birthmonth"
               value={bMonth}
               onChange={(event) => setBMonth(event.target.value)}
@@ -190,7 +208,12 @@ export function NewPerson() {
             />
             {'   '}
             BCE
-            <input type="checkbox" id="bbce" name="birthBCE" />
+            <input
+              type="checkbox"
+              id="bbce"
+              name="birthBCE"
+              onChange={birthBCE}
+            />
           </p>
           <p className="input for death date">
             <label>Deathdate: </label>
@@ -224,7 +247,7 @@ export function NewPerson() {
             <input
               type="text"
               name="country"
-              value={newPerson.country}
+              value={person.country}
               onChange={handleStringFieldChange}
             />
           </p>
@@ -232,9 +255,9 @@ export function NewPerson() {
             <label htmlFor="picture">Picture</label>
             <input type="file" name="picture" />
           </p> */}
-          {newPerson.photoURL ? (
+          {person.photoURL ? (
             <p>
-              <img alt="Person" width={200} src={newPerson.photoURL} />
+              <img alt="Person" width={200} src={person.photoURL} />
             </p>
           ) : null}
 
@@ -253,7 +276,7 @@ export function NewPerson() {
           <label>Biography: </label>
           <textarea
             name="biography"
-            value={newPerson.biography}
+            value={person.biography}
             onChange={handleStringFieldChange}
           ></textarea>
         </p>

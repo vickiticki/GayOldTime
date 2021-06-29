@@ -233,7 +233,9 @@ export function Person() {
         </ul>
       </div>
       <div className="person end buttons">
-        <button>Edit</button>
+        <button>
+          <Link to={`/editperson/${id}`}>Edit</Link>
+        </button>
         <button className="go home">
           <Link to="/">Home</Link>
         </button>
