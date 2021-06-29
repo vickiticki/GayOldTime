@@ -316,7 +316,7 @@ export function EditPerson() {
           ></textarea>
         </p>
 
-        <p className="home">{submitButton}</p>
+        <p className="submit-person">{submitButton}</p>
       </form>
       <div className="home">
         <button className="go home">

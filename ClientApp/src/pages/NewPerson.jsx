@@ -263,10 +263,10 @@ export function NewPerson() {
           ></textarea>
         </p>
 
-        <h3>Recommended Media</h3>
+        {/* <h3>Recommended Media</h3>
         <div className="recommended media">
           <ul className="nonfiction sources">
-            {/* change this to one input box and one checkmark for nonfiction */}
+            
             <h5>Nonfiction</h5>
             <li>
               <input type="text" name="nonfiction" />
@@ -278,14 +278,17 @@ export function NewPerson() {
               <input type="text" name="fiction" />
             </li>
           </ul>
-        </div>
-        <p>
+        </div> */}
+
+        <p className="submit-person">
           <input type="submit" value="Submit" onClick={handleFormSubmit} />
         </p>
       </form>
-      <button className="go home">
-        <Link to="/">Home</Link>
-      </button>
+      <div className="home">
+        <button className="go home">
+          <Link to="/">Home</Link>
+        </button>
+      </div>
     </>
   )
 }

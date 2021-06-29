@@ -15,10 +15,12 @@ body {
   // display: flex;
   // flex-direction: column;
   // flex: 2;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 a:link {
-  color: orange;
+  color: rgb(27, 3, 143);
 }
 
 a:visited {
@@ -31,6 +33,8 @@ header {
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
+  margin-left: -1rem;
+  margin-right: -1rem;
   border-bottom: solid 1px black;
   background-color: #23b0b8;
   color: #0a3f70;
@@ -178,11 +182,27 @@ h3 {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .end {
   display: flex;
   justify-content: space-around;
   margin-top: 2rem;
+}
+
+.file-drop-zone {
+  border: solid black 1px;
+  padding: 2rem;
+  margin: 1rem;
+  background-color: rgb(60, 85, 88);
+  color: powderblue;
+}
+
+.submit-person {
+  text-align: center;
+  input {
+    font-size: 24px;
+  }
 }
 
 // .newcomment {
