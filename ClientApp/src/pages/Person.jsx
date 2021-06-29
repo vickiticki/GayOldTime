@@ -148,7 +148,7 @@ export function Person() {
       headers: { 'content-type': 'application/json', ...authHeader() },
     })
 
-    if (response.status === 200 || response.status === 204) {
+    if (response.ok) {
       history.push('/')
     }
   }
@@ -162,16 +162,15 @@ export function Person() {
           <li>Died: {person.deathdate}</li>
           <li>Country: {person.country}</li>
         </ul>
-        <img alt="person picture" width={200} src={getPic(person)} />
-      </div>
+        <img alt="picture of person" width={200} src={getPic(person)} />
 
-      <div className="Picture">
         {/* No clue why this doesn't work */}
-        {/* where picture
-        {person.photoURL ? (
+        {/* where picture */}
+        {/* {person.photoURL ? (
           <img alt="Person" width={200} src={person.photoURL} />
         ) : null} */}
       </div>
+
       <div className="quick little bio">
         <p>{person.biography}</p>
       </div>
@@ -232,12 +231,14 @@ export function Person() {
           </li>
         </ul>
       </div>
+      <div className="home">
+        <button className="go home">
+          <Link to="/">Home</Link>
+        </button>
+      </div>
       <div className="person end buttons">
         <button>
           <Link to={`/editperson/${id}`}>Edit</Link>
-        </button>
-        <button className="go home">
-          <Link to="/">Home</Link>
         </button>
         {/* <p>Created by {person.userId}</p> */}
         <button onClick={handleDelete}>Delete</button>

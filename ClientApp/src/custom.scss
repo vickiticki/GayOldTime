@@ -173,11 +173,14 @@ h3 {
   width: 50%;
 }
 
+.home {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
 .end {
   display: flex;
   justify-content: space-around;
   margin-top: 2rem;
-  .home {
-    font-size: 20px;
-  }
 }

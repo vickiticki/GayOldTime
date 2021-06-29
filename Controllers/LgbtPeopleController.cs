@@ -135,8 +135,8 @@ namespace GayOldTime.Controllers
         // new values for the record.
         //
         // eventually I might use this but not right now
-        // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost]
+        // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult<LgbtPerson>> PostLgbtPerson(LgbtPerson lgbtPerson)
         {
 
