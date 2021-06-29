@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
-import { authHeader } from '../auth'
+import { authHeader, isLoggedIn } from '../auth'
 
 export function Person() {
   const params = useParams()
@@ -140,6 +140,15 @@ export function Person() {
     reloadPerson()
   }
 
+  const editButtons = isLoggedIn() ? (
+    <div className="person end buttons">
+      <button>
+        <Link to={`/editperson/${id}`}>Edit</Link>
+      </button>
+      <button onClick={handleDelete}>Delete</button>
+    </div>
+  ) : null
+
   async function handleDelete(event) {
     event.preventDefault()
 
@@ -236,13 +245,14 @@ export function Person() {
           <Link to="/">Home</Link>
         </button>
       </div>
-      <div className="person end buttons">
+      {editButtons}
+      {/* <div className="person end buttons">
         <button>
           <Link to={`/editperson/${id}`}>Edit</Link>
         </button>
-        {/* <p>Created by {person.userId}</p> */}
         <button onClick={handleDelete}>Delete</button>
-      </div>
+      </div> */}
+      {/* <p>Created by {person.userId}</p> */}
     </>
   )
 }
