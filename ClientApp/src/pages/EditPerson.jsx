@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import { useDropzone } from 'react-dropzone'
-import { authHeader, isLoggedIn } from '../auth'
+import { authHeader, isLoggedIn, getUser } from '../auth'
 
 export function EditPerson() {
   const history = useHistory()
+  const user = getUser()
   const params = useParams()
   const id = params.id
   const [errorMessage, setErrorMessage] = useState('')
@@ -19,6 +20,8 @@ export function EditPerson() {
     biography: '',
     photoURL: '',
     // userId: 0,
+    maker: '',
+    lastUpdater: '',
   })
 
   useEffect(() => {
@@ -89,6 +92,8 @@ export function EditPerson() {
     } else {
       person.deathdate = `${dYear}-${dMonth}-${dDate}`
     }
+
+    person.lastUpdater = user.fullName
 
     const response = await fetch(`/api/LgbtPeople/${id}`, {
       method: 'PUT',
