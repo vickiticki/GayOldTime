@@ -33,11 +33,13 @@ export function EditPerson() {
     console.log(person)
   }, [id])
 
-  const [bYear, setBYear] = useState(String(Math.abs(person.birthYear)))
-  const [bMonth, setBMonth] = useState(person.birthday.split('-')[0])
-  const [bDate, setBDate] = useState(person.birthday.split('-')[1])
+  const by = String(person.birthYear)
+  const bm = person.birthday.split('-')[1]
+  const bd = person.birthday.split('-')[0]
+  const [bYear, setBYear] = useState('')
+  const [bMonth, setBMonth] = useState('')
+  const [bDate, setBDate] = useState('')
 
-  //why doesn't this work
   const [dYear, setDYear] = useState(person.deathdate.split('-')[0])
   const [dMonth, setDMonth] = useState(person.deathdate.split('-')[1])
   const [dDate, setDDate] = useState(person.deathdate.split('-')[2])
@@ -51,7 +53,15 @@ export function EditPerson() {
 
   async function handleFormSubmit(event) {
     event.preventDefault()
-
+    if (bDate === '') {
+      setBDate(bd)
+    }
+    if (bMonth === '') {
+      setBMonth(bm)
+    }
+    if (bYear === '') {
+      setBYear(by)
+    }
     if (bbce.checked) {
       person.birthYear = 0 - parseInt(bYear)
       // person.birthday = `${bMonth}-${bDate}`
@@ -185,21 +195,21 @@ export function EditPerson() {
             <label>Birthdate: </label>
             <input
               type="number"
-              placeholder="YYYY"
+              placeholder={person.birthYear}
               name="birthyear"
               value={bYear}
               onChange={(event) => setBYear(event.target.value)}
             />
             <input
               type="number"
-              placeholder="MM"
+              placeholder={bm}
               name="birthmonth"
               value={bMonth}
               onChange={(event) => setBMonth(event.target.value)}
             />
             <input
               type="number"
-              placeholder="DD"
+              placeholder={bd}
               name="birthday"
               value={bDate}
               onChange={(event) => setBDate(event.target.value)}
