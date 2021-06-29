@@ -5,7 +5,7 @@ import { authHeader, getUser } from '../auth'
 
 export function NewPerson() {
   const history = useHistory()
-  const user = getUser
+  const user = getUser()
   const [errorMessage, setErrorMessage] = useState('')
   const [isUploading, setIsUploading] = useState(false)
 
@@ -17,6 +17,8 @@ export function NewPerson() {
     country: '',
     biography: '',
     photoURL: '',
+    maker: '',
+    lastUpdater: '',
     // userId: 0,
   })
 
@@ -50,10 +52,12 @@ export function NewPerson() {
     } else {
       newPerson.deathdate = `${dYear}-${dMonth}-${dDate}`
     }
+    newPerson.maker = user.fullName
+    newPerson.lastUpdater = user.fullName
 
     const response = await fetch('/api/LgbtPeople', {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: { 'content-type': 'application/json', ...authHeader },
       // , ...authHeader
       body: JSON.stringify(newPerson),
     })

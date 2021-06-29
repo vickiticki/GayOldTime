@@ -17,6 +17,8 @@ export function Person() {
     photoURL: '',
     mediaRecs: [],
     userId: 0,
+    maker: '',
+    lastUpdater: '',
   })
 
   const [newFMedia, setNewFMedia] = useState({
@@ -174,7 +176,7 @@ export function Person() {
         <img alt="picture of person" width={200} src={getPic(person)} />
 
         {/* No clue why this doesn't work */}
-        {/* where picture */}
+
         {/* {person.photoURL ? (
           <img alt="Person" width={200} src={person.photoURL} />
         ) : null} */}
@@ -248,11 +250,14 @@ export function Person() {
       {editButtons}
       {/* <div className="person end buttons">
         <button>
-          <Link to={`/editperson/${id}`}>Edit</Link>
+        <Link to={`/editperson/${id}`}>Edit</Link>
         </button>
         <button onClick={handleDelete}>Delete</button>
       </div> */}
       {/* <p>Created by {person.userId}</p> */}
+      <p>
+        Page made by {person.maker} | Last Edited by {person.lastUpdater}
+      </p>
     </>
   )
 }
