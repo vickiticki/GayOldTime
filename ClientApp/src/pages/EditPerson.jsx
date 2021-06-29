@@ -304,24 +304,16 @@ export function EditPerson() {
           ></textarea>
         </p>
 
-        <h3>Recommended Media</h3>
-        <div className="recommended media">
-          <ul className="nonfiction sources">
-            {/* change this to one input box and one checkmark for nonfiction */}
-            <h5>Nonfiction</h5>
-            <li>
-              <input type="text" name="nonfiction" />
-            </li>
-          </ul>
-          <ul className="fiction sources">
-            <h5>Fiction</h5>
-            <li>
-              <input type="text" name="fiction" />
-            </li>
-          </ul>
-        </div>
-        <p>
-          <input type="submit" value="Submit" onClick={handleFormSubmit} />
+        <p className="home">
+          {dDate === '' ? (
+            <input
+              type="submit"
+              value="Looks Good"
+              onClick={handleFormSubmit}
+            />
+          ) : (
+            <input type="submit" value="Submit" onClick={handleFormSubmit} />
+          )}
         </p>
       </form>
       <div className="home">
