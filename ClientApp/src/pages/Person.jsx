@@ -17,7 +17,6 @@ export function Person() {
     biography: '',
     photoURL: '',
     mediaRecs: [],
-    comments: [],
     userId: 0,
     maker: '',
     lastUpdater: '',
@@ -35,12 +34,6 @@ export function Person() {
     fiction: false,
     personId: id,
     LgbtPersonId: id,
-  })
-
-  const [newComment, setNewComment] = useState({
-    body: '',
-    LgbtPersonId: id,
-    userId: user.Id,
   })
 
   async function reloadPerson() {
@@ -133,31 +126,6 @@ export function Person() {
 
   function getPic(person) {
     return person.photoUrl
-  }
-
-  function handleCommentChange(event) {
-    setNewComment({
-      body: event.target.value,
-      LgbtPersonId: id,
-      userId: user.Id,
-    })
-  }
-  async function handlePostComment(event) {
-    event.preventDefault()
-    const response = await fetch(`/api/Commentss`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(newComment),
-    })
-
-    if (response.ok) {
-      setNewComment({
-        body: '',
-        LgbtPersonId: id,
-        userId: user.Id,
-      })
-      reloadPerson()
-    }
   }
 
   async function removeMediaRec(event) {
