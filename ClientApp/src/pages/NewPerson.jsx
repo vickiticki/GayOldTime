@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDropzone } from 'react-dropzone'
-import { authHeader } from '../auth'
+import { authHeader, getUser } from '../auth'
 
 export function NewPerson() {
   const history = useHistory()
+  const user = getUser
   const [errorMessage, setErrorMessage] = useState('')
   const [isUploading, setIsUploading] = useState(false)
 

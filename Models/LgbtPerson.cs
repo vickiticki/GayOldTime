@@ -35,5 +35,9 @@ namespace GayOldTime
         //photo
         public string PhotoUrl { get; set; }
 
+        public string Maker { get; set; }
+
+        public string LastUpdater { get; set; }
+
     }
 }
