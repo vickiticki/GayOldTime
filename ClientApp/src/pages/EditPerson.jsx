@@ -14,7 +14,7 @@ export function EditPerson() {
     name: '',
     birthYear: 0,
     birthday: '',
-    Deathdate: '',
+    deathdate: '',
     country: '',
     biography: '',
     photoURL: '',
@@ -33,16 +33,14 @@ export function EditPerson() {
     console.log(person)
   }, [id])
 
-  const [bYear, setBYear] = useState(Math.abs(person.birthYear))
+  const [bYear, setBYear] = useState(String(Math.abs(person.birthYear)))
   const [bMonth, setBMonth] = useState(person.birthday.split('-')[0])
   const [bDate, setBDate] = useState(person.birthday.split('-')[1])
 
-  // const [dYear, setDYear] = useState(person.Deathdate('-')[0])
-  // const [dMonth, setDMonth] = useState(person.Deathdate('-')[1])
-  // const [dDate, setDDate] = useState(person.Deathdate('-')[2])
-  const [dYear, setDYear] = useState('')
-  const [dMonth, setDMonth] = useState('')
-  const [dDate, setDDate] = useState('')
+  //why doesn't this work
+  const [dYear, setDYear] = useState(person.deathdate.split('-')[0])
+  const [dMonth, setDMonth] = useState(person.deathdate.split('-')[1])
+  const [dDate, setDDate] = useState(person.deathdate.split('-')[2])
 
   const bbce = document.querySelector('#bbce')
   const dbce = document.querySelector('#dbce')
@@ -67,7 +65,7 @@ export function EditPerson() {
       person.deathdate = `${dYear}-${dMonth}-${dDate}`
     }
 
-    const response = await fetch(`/api/LgbtPeople/${id}}`, {
+    const response = await fetch(`/api/LgbtPeople/${id}`, {
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
       // , ...authHeader
@@ -169,7 +167,7 @@ export function EditPerson() {
 
   return (
     <>
-      <h1 className="new person page title">New Person</h1>
+      <h1 className="edit person page title">Edit {person.name}</h1>
       {errorMessage}
 
       <form onSubmit={handleFormSubmit}>
@@ -187,14 +185,14 @@ export function EditPerson() {
             <label>Birthdate: </label>
             <input
               type="number"
-              // placeholder="YYYY"
+              placeholder="YYYY"
               name="birthyear"
               value={bYear}
               onChange={(event) => setBYear(event.target.value)}
             />
             <input
               type="number"
-              // placeholder="MM"
+              placeholder="MM"
               name="birthmonth"
               value={bMonth}
               onChange={(event) => setBMonth(event.target.value)}
