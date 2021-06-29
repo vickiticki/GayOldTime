@@ -76,10 +76,10 @@ export function EditPerson() {
     if (dYear === '') {
       setDYear(dy)
     }
+
     // handle bce
     if (bbce.checked) {
       person.birthYear = 0 - parseInt(bYear)
-      // person.birthday = `${bMonth}-${bDate}`
     } else {
       person.birthYear = parseInt(bYear)
     }
@@ -105,6 +105,7 @@ export function EditPerson() {
     console.log('form submitted')
   }
 
+  // might use this later
   // if (response.status === 401) {
   //   setErrorMessage('Not Authorized')
   // } else {
@@ -274,10 +275,7 @@ export function EditPerson() {
               onChange={handleStringFieldChange}
             />
           </p>
-          {/* <p className="form-input">
-            <label htmlFor="picture">Picture</label>
-            <input type="file" name="picture" />
-          </p> */}
+
           {person.photoURL ? (
             <p>
               <img alt="Person" width={200} src={person.photoURL} />
