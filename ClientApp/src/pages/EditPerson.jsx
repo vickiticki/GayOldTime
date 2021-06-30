@@ -102,7 +102,7 @@ export function EditPerson() {
       body: JSON.stringify(person),
     })
     if (response.ok) {
-      history.push('/')
+      history.push(`/person/${id}`)
     } else {
       console.log('oops')
     }
