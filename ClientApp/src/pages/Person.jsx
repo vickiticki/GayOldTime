@@ -184,7 +184,7 @@ export function Person() {
       </div>
 
       <div className="quick little bio">
-        <p>{person.biography}</p>
+        <p className="life">{person.biography}</p>
       </div>
       <h3>Recommended Media</h3>
       <div className="recommended media">
