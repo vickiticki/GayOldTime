@@ -91,39 +91,6 @@ button {
   width: 100vw;
   height: 100%;
   justify-content: space-between;
-  // .roy {
-  //   display: flex;
-  //   justify-content: initial;
-  //   .stripe {
-  //     width: 30px;
-  //   }
-  //   .red {
-  //     background-color: red;
-  //   }
-  //   .orange {
-  //     background-color: orange;
-  //   }
-  //   .yellow {
-  //     background-color: yellow;
-  //   }
-  // }
-  // .gbp {
-  //   display: flex;
-  //   justify-content: right;
-
-  //   .green {
-  //     background-color: green;
-  //     width: 30px;
-  //   }
-  //   .blue {
-  //     background-color: blue;
-  //     width: 30px;
-  //   }
-  //   .purple {
-  //     background-color: purple;
-  //     width: 30px;
-  //   }
-  // }
 }
 
 .title {
@@ -299,6 +266,8 @@ main {
   .gbp {
     display: flex;
     justify-content: right;
+    // makes it disappear for some reason?
+    // height: 100%;
 
     .green {
       background-color: green;
