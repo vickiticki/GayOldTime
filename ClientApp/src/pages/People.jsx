@@ -105,12 +105,14 @@ export function People() {
             </li>
           ))}
         </ul>
+      </main>
+      <div className="make">
         {isLoggedIn() ? (
           <button className="create person button">
             <Link to="/newperson">Add a Person</Link>
           </button>
         ) : null}
-      </main>
+      </div>
     </>
   )
 }
