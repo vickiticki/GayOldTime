@@ -74,8 +74,8 @@ export function People() {
   }
   return (
     <>
-      <h1 className="home page title">Gay Old Time</h1>
-      <div className="home search and filter stuff">
+      <h1 className="main page title">Gay Old Time</h1>
+      <div className="search and filter stuff">
         <p className="search label">Search</p>
         <input
           type="text"

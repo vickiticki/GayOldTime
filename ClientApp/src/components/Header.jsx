@@ -10,14 +10,14 @@ export function Header() {
     window.location.assign('/')
   }
 
-  const signUpButton = isLoggedIn() ? (
+  const signInButton = isLoggedIn() ? (
     <span className="signout" onClick={handleLogout}>
       Sign out
     </span>
   ) : (
     <Link to="/SignIn">Sign In</Link>
   )
-  const signInButton = isLoggedIn() ? null : <Link to="/SignUp/">Sign Up</Link>
+  const signUpButton = isLoggedIn() ? null : <Link to="/SignUp/">Sign Up</Link>
   const helloUser = isLoggedIn() ? <p>Hello, {user.fullName}!</p> : null
 
   return (
@@ -31,8 +31,8 @@ export function Header() {
         <div className="top middle">{helloUser}</div>
         <div className="top right">
           <ul>
-            <li>{signUpButton}</li>
             <li>{signInButton}</li>
+            <li className="signup link">{signUpButton}</li>
           </ul>
         </div>
       </header>

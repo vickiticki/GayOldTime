@@ -29,6 +29,7 @@ namespace GayOldTime
 
         public List<MediaRec> MediaRecs { get; set; }
 
+        // I'll figure this out later
         // public List<Comment> Comments { get; set; }
 
         //user
