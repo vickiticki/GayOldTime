@@ -91,22 +91,22 @@ button {
   width: 100vw;
   height: 100%;
   justify-content: space-between;
-  .roy {
-    display: flex;
-    justify-content: initial;
-    .stripe {
-      width: 30px;
-    }
-    .red {
-      background-color: red;
-    }
-    .orange {
-      background-color: orange;
-    }
-    .yellow {
-      background-color: yellow;
-    }
-  }
+  // .roy {
+  //   display: flex;
+  //   justify-content: initial;
+  //   .stripe {
+  //     width: 30px;
+  //   }
+  //   .red {
+  //     background-color: red;
+  //   }
+  //   .orange {
+  //     background-color: orange;
+  //   }
+  //   .yellow {
+  //     background-color: yellow;
+  //   }
+  // }
   .gbp {
     display: flex;
     justify-content: right;
@@ -266,6 +266,8 @@ main {
   }
 }
 
+@media all and (max-width: 549px) {
+}
 @media all and (min-width: 550px) {
   main {
     // padding-left: 1rem;
@@ -276,6 +278,22 @@ main {
       li {
         width: 50%;
       }
+    }
+  }
+  .roy {
+    display: flex;
+    justify-content: initial;
+    .stripe {
+      width: 30px;
+    }
+    .red {
+      background-color: red;
+    }
+    .orange {
+      background-color: orange;
+    }
+    .yellow {
+      background-color: yellow;
     }
   }
 }
