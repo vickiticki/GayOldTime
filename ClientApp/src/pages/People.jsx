@@ -74,44 +74,54 @@ export function People() {
   }
   return (
     <>
-      <h1 className="main page title">Gay Old Time</h1>
-      <div className="search and filter stuff">
-        <p className="search label">Search</p>
-        <input
-          type="text"
-          id="nameSearch"
-          placeholder="Name or Country"
-          className="searchBox"
-          value={filterText}
-          onChange={(event) => setFilterText(event.target.value)}
-        />
-      </div>
-      <div className="pick the order">
-        Order By:
-        <button onClick={(event) => setHowSort('date')}>Date</button>
-        <button onClick={(event) => setHowSort('name')}>Name</button>
-      </div>
-      <main>
-        <ul>
-          {Sorting(people)}
-          {people.map((person) => (
-            <li key={person.id}>
-              <h4>
-                <Link to={`/person/${person.id}`}>{person.name} </Link>
-              </h4>
+      <div className="all">
+        <div className="red stripe"></div>
+        <div className="orange stripe"></div>
+        <div className="yellow stripe"></div>
+        <div className="front page">
+          <h1 className="main page title">Gay Old Time</h1>
+          <div className="search and filter stuff">
+            <p className="search label">Search</p>
+            <input
+              type="text"
+              id="nameSearch"
+              placeholder="Name or Country"
+              className="searchBox"
+              value={filterText}
+              onChange={(event) => setFilterText(event.target.value)}
+            />
+          </div>
+          <div className="pick the order">
+            Order By:
+            <button onClick={(event) => setHowSort('date')}>Date</button>
+            <button onClick={(event) => setHowSort('name')}>Name</button>
+          </div>
+          <main>
+            <ul>
+              {Sorting(people)}
+              {people.map((person) => (
+                <li key={person.id}>
+                  <h4>
+                    <Link to={`/person/${person.id}`}>{person.name} </Link>
+                  </h4>
 
-              <p>{displayBirthYear(person)}</p>
-              <p>{person.country}</p>
-            </li>
-          ))}
-        </ul>
-      </main>
-      <div className="make">
-        {isLoggedIn() ? (
-          <button className="create person button">
-            <Link to="/newperson">Add a Person</Link>
-          </button>
-        ) : null}
+                  <p>{displayBirthYear(person)}</p>
+                  <p>{person.country}</p>
+                </li>
+              ))}
+            </ul>
+          </main>
+          <div className="make">
+            {isLoggedIn() ? (
+              <button className="create person button">
+                <Link to="/newperson">Add a Person</Link>
+              </button>
+            ) : null}
+          </div>
+        </div>
+        <div className="green stripe"></div>
+        <div className="blue stripe"></div>
+        <div className="purple stripe"></div>
       </div>
     </>
   )
