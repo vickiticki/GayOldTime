@@ -214,6 +214,39 @@ h3 {
   }
 }
 
+@media all and (min-width: 550px) {
+  main {
+    padding-left: 1rem;
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+
+      li {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 800px) {
+  main ul {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      width: 32%;
+    }
+  }
+}
+@media all and (min-width: 1250px) {
+  main ul {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      width: 25%;
+    }
+  }
+}
+
 // .newcomment {
 //   width: 100%;
 //   display: flex;

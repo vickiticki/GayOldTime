@@ -25,7 +25,7 @@ export function Header() {
       <header>
         <div className="top left">
           <h5>
-            <Link to="/">Gay Old Time</Link>
+            <Link to="/">🏳️‍🌈 Gay Old Time 🏳️‍🌈</Link>
           </h5>
         </div>
         <div className="top middle">{helloUser}</div>

@@ -91,25 +91,26 @@ export function People() {
         <button onClick={(event) => setHowSort('date')}>Date</button>
         <button onClick={(event) => setHowSort('name')}>Name</button>
       </div>
+      <main>
+        <ul>
+          {Sorting(people)}
+          {people.map((person) => (
+            <li key={person.id}>
+              <h4>
+                <Link to={`/person/${person.id}`}>{person.name} </Link>
+              </h4>
 
-      <ul>
-        {Sorting(people)}
-        {people.map((person) => (
-          <li key={person.id}>
-            <h4>
-              <Link to={`/person/${person.id}`}>{person.name} </Link>
-            </h4>
-
-            <p>{displayBirthYear(person)}</p>
-            <p>{person.country}</p>
-          </li>
-        ))}
-      </ul>
-      {isLoggedIn() ? (
-        <button className="create person button">
-          <Link to="/newperson">Add a Person</Link>
-        </button>
-      ) : null}
+              <p>{displayBirthYear(person)}</p>
+              <p>{person.country}</p>
+            </li>
+          ))}
+        </ul>
+        {isLoggedIn() ? (
+          <button className="create person button">
+            <Link to="/newperson">Add a Person</Link>
+          </button>
+        ) : null}
+      </main>
     </>
   )
 }
