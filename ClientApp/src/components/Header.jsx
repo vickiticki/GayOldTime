@@ -22,6 +22,10 @@ export function Header() {
 
   return (
     <>
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+      </style>
       <header>
         <div className="top left">
           <h5>
