@@ -1,7 +1,7 @@
 export function Foot() {
   return (
     <footer>
-      <p>Thank you for coming!</p>
+      <p>Have a yabba dabba doo time!</p>
     </footer>
   )
 }
