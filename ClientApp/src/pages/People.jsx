@@ -75,9 +75,11 @@ export function People() {
   return (
     <>
       <div className="all">
-        <div className="red stripe"></div>
-        <div className="orange stripe"></div>
-        <div className="yellow stripe"></div>
+        <div className="roy">
+          <div className="red stripe"></div>
+          <div className="orange stripe"></div>
+          <div className="yellow stripe"></div>
+        </div>
         <div className="front page">
           <h1 className="main page title">Gay Old Time</h1>
           <div className="search and filter stuff">
@@ -119,9 +121,11 @@ export function People() {
             ) : null}
           </div>
         </div>
-        <div className="green stripe"></div>
-        <div className="blue stripe"></div>
-        <div className="purple stripe"></div>
+        <div className="gbp">
+          <div className="green stripe"></div>
+          <div className="blue stripe"></div>
+          <div className="purple stripe"></div>
+        </div>
       </div>
     </>
   )

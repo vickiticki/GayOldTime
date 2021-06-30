@@ -10,7 +10,7 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
+  // min-height: 100%;
   padding-bottom: 3rem;
   // display: flex;
   // flex-direction: column;
@@ -88,30 +88,44 @@ button {
 }
 .all {
   display: flex;
-  width: 100%;
+  width: 100vw;
+  height: 100%;
+  justify-content: space-between;
+  .roy {
+    display: flex;
+    justify-content: initial;
+    .stripe {
+      width: 30px;
+    }
+    .red {
+      background-color: red;
+    }
+    .orange {
+      background-color: orange;
+    }
+    .yellow {
+      background-color: yellow;
+    }
+  }
+  .gbp {
+    display: flex;
+    justify-content: right;
 
-  .stripe {
-    width: 30px;
-  }
-  .red {
-    background-color: red;
-  }
-  .orange {
-    background-color: orange;
-  }
-  .yellow {
-    background-color: yellow;
-  }
-  .green {
-    background-color: green;
-  }
-  .blue {
-    background-color: blue;
-  }
-  .purple {
-    background-color: purple;
+    .green {
+      background-color: green;
+      width: 30px;
+    }
+    .blue {
+      background-color: blue;
+      width: 30px;
+    }
+    .purple {
+      background-color: purple;
+      width: 30px;
+    }
   }
 }
+
 .title {
   text-align: center;
 }
