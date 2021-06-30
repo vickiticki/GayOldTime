@@ -107,23 +107,23 @@ button {
   //     background-color: yellow;
   //   }
   // }
-  .gbp {
-    display: flex;
-    justify-content: right;
+  // .gbp {
+  //   display: flex;
+  //   justify-content: right;
 
-    .green {
-      background-color: green;
-      width: 30px;
-    }
-    .blue {
-      background-color: blue;
-      width: 30px;
-    }
-    .purple {
-      background-color: purple;
-      width: 30px;
-    }
-  }
+  //   .green {
+  //     background-color: green;
+  //     width: 30px;
+  //   }
+  //   .blue {
+  //     background-color: blue;
+  //     width: 30px;
+  //   }
+  //   .purple {
+  //     background-color: purple;
+  //     width: 30px;
+  //   }
+  // }
 }
 
 .title {
@@ -294,6 +294,23 @@ main {
     }
     .yellow {
       background-color: yellow;
+    }
+  }
+  .gbp {
+    display: flex;
+    justify-content: right;
+
+    .green {
+      background-color: green;
+      width: 30px;
+    }
+    .blue {
+      background-color: blue;
+      width: 30px;
+    }
+    .purple {
+      background-color: purple;
+      width: 30px;
     }
   }
 }
