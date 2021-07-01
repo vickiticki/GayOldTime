@@ -156,7 +156,7 @@ export function NewPerson() {
   }
 
   return (
-    <>
+    <div className="abc">
       <h1 className="new person page title">New Person</h1>
       {errorMessage}
       <form onSubmit={handleFormSubmit}>
@@ -289,6 +289,6 @@ export function NewPerson() {
           <Link to="/">Home</Link>
         </button>
       </div>
-    </>
+    </div>
   )
 }

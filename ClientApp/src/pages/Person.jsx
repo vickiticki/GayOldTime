@@ -166,7 +166,7 @@ export function Person() {
   }
 
   return (
-    <>
+    <div className="abc">
       <h1 className="Person page title">{person.name}</h1>
       <div className="basic info">
         <ul className="important facts">
@@ -253,6 +253,6 @@ export function Person() {
       <p>
         Page made by {person.maker} | Last Edited by {person.lastUpdater}
       </p>
-    </>
+    </div>
   )
 }

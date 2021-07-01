@@ -36,7 +36,7 @@ export function SignUp() {
   }
 
   return (
-    <>
+    <div className="abc">
       <h1>Sign Up</h1>
       {errorMessage ? <p>{errorMessage}</p> : null}
       <p>
@@ -77,6 +77,6 @@ export function SignUp() {
           <Link to="/">Home</Link>
         </button>
       </div>
-    </>
+    </div>
   )
 }
