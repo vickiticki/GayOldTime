@@ -147,13 +147,13 @@ export function NewPerson() {
   }
 
   // do I still use this?
-  function birthBCE() {
-    if (bbce.checked) {
-      console.log('yessir')
-    } else {
-      console.log('nope')
-    }
-  }
+  // function birthBCE() {
+  //   if (bbce.checked) {
+  //     console.log('yessir')
+  //   } else {
+  //     console.log('nope')
+  //   }
+  // }
 
   return (
     <div className="abc">
