@@ -82,6 +82,7 @@ export function People() {
         </div>
         <div className="front page">
           <h1 className="main page title">Gay Old Time</h1>
+          <p className="subtitle">LGBT+ Historical Figures</p>
           <div className="search and filter stuff">
             <p className="search label">Search</p>
             <input
