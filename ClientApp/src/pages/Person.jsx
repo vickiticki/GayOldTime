@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
-import { authHeader, isLoggedIn, getUser } from '../auth'
+import { authHeader, isLoggedIn } from '../auth'
 
 export function Person() {
   const params = useParams()
   const id = params.id
-  const user = getUser()
+  // const user = getUser()
   const history = useHistory()
 
   const [person, setPerson] = useState({
