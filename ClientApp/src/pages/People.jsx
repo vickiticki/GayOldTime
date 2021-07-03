@@ -119,7 +119,9 @@ export function People() {
               <button className="create person button">
                 <Link to="/newperson">Add a Person</Link>
               </button>
-            ) : null}
+            ) : (
+              <p className="nsi">Sign In to Add a Person</p>
+            )}
           </div>
         </div>
         <div className="gbp">

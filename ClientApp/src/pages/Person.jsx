@@ -150,7 +150,9 @@ export function Person() {
       </button>
       <button onClick={handleDelete}>Delete</button>
     </div>
-  ) : null
+  ) : (
+    <p className="nsi">Sign in to edit</p>
+  )
 
   async function handleDelete(event) {
     event.preventDefault()
